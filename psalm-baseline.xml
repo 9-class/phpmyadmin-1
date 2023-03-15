@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.7.7@e028ba46ba0d7f9a78bc3201c251e137383e145f">
+<files psalm-version="5.8.0@9cf4f60a333f779ad3bc704a555920e81d4fdcda">
   <file src="libraries/classes/Advisory/Advisor.php">
     <MixedArgument>
       <code>$matches[1]</code>
@@ -847,7 +847,6 @@
       <code>$key</code>
       <code>$one_key</code>
       <code>$relations</code>
-      <code>$the_total</code>
       <code>$value</code>
       <code>$value</code>
     </MixedAssignment>
@@ -1742,9 +1741,6 @@
       <code>$createTime</code>
       <code>$createTimeAll</code>
       <code>$currentTable</code>
-      <code><![CDATA[$currentTable['Rows']]]></code>
-      <code><![CDATA[$currentTable['TABLE_ROWS']]]></code>
-      <code><![CDATA[$currentTable['TABLE_ROWS']]]></code>
       <code>$dbTable</code>
       <code>$favoriteTables</code>
       <code>$overheadSize</code>
@@ -3303,7 +3299,6 @@
       <code><![CDATA[$GLOBALS['sql_query']]]></code>
       <code><![CDATA[$GLOBALS['table_from_sql']]]></code>
       <code><![CDATA[$GLOBALS['unlim_num_rows']]]></code>
-      <code><![CDATA[$GLOBALS['unlim_num_rows']]]></code>
       <code>$bkm_all_users</code>
       <code>$sql_query</code>
     </MixedAssignment>
@@ -4046,7 +4041,6 @@
       <code>$column_name</code>
       <code>$column_name</code>
       <code>$curr_rel_field</code>
-      <code><![CDATA[$extra_data['row_count']]]></code>
       <code>$multi_edit_auto_increment</code>
       <code>$multi_edit_columns</code>
       <code>$multi_edit_columns[$key]</code>
@@ -5618,7 +5612,6 @@
       <code><![CDATA[$this->formAndOrCols[$lastWhere]]]></code>
       <code>$tsize[$table]</code>
       <code>$tsize[$table]</code>
-      <code>$tsize[$table]</code>
     </MixedArrayOffset>
     <MixedAssignment>
       <code><![CDATA[$GLOBALS[${'cur' . $or}][$newColumnCount]]]></code>
@@ -5638,7 +5631,6 @@
       <code>$indexColumns</code>
       <code>$isWhere</code>
       <code>$masterTable</code>
-      <code>$maxsize</code>
       <code>$name</code>
       <code>$oneField</code>
       <code>$oneKey</code>
@@ -5655,7 +5647,6 @@
       <code>$table</code>
       <code>$tempSearchTables[]</code>
       <code>$tmpCriteria</code>
-      <code>$tsize[$table]</code>
       <code>$uniqueColumns</code>
       <code>$value</code>
       <code>$whereClauseColumns</code>
@@ -6660,7 +6651,6 @@
       <code>$sqlQuery</code>
       <code>$sqlQueryAdd</code>
       <code>$tableCreateTime</code>
-      <code>$theTotal</code>
       <code>$total</code>
       <code>$value</code>
       <code><![CDATA[$whereClauseMap[$rowNumber][$meta->orgtable]]]></code>
@@ -7227,32 +7217,12 @@
     </UnusedReturnValue>
   </file>
   <file src="libraries/classes/Gis/GisGeometry.php">
-    <MixedArgument>
-      <code>$line</code>
-      <code>$point</code>
-      <code>$polygon</code>
-      <code><![CDATA[$scale_data['maxX']]]></code>
-      <code><![CDATA[$scale_data['maxY']]]></code>
-      <code><![CDATA[$scale_data['minX']]]></code>
-      <code><![CDATA[$scale_data['minY']]]></code>
-    </MixedArgument>
-    <MixedAssignment>
-      <code>$line</code>
-      <code>$point</code>
-      <code>$points_arr[]</code>
-      <code>$points_arr[]</code>
-      <code>$polygon</code>
-      <code>$x</code>
-      <code>$y</code>
-    </MixedAssignment>
     <MixedOperand>
-      <code><![CDATA[$coordinates[0] - $scale_data['x']]]></code>
-      <code><![CDATA[$coordinates[1] - $scale_data['y']]]></code>
-      <code>$point[0]</code>
-      <code>$point[1]</code>
       <code><![CDATA[$scale_data['height']]]></code>
       <code><![CDATA[$scale_data['x']]]></code>
       <code><![CDATA[$scale_data['y']]]></code>
+      <code><![CDATA[(float) $coordinates[0] - $scale_data['x']]]></code>
+      <code><![CDATA[(float) $coordinates[1] - $scale_data['y']]]></code>
     </MixedOperand>
     <PossiblyFalseOperand>
       <code>$last_comma</code>
@@ -7273,14 +7243,6 @@
   </file>
   <file src="libraries/classes/Gis/GisLineString.php">
     <MixedArgument>
-      <code>$point[0]</code>
-      <code>$point[0]</code>
-      <code>$point[1]</code>
-      <code>$point[1]</code>
-      <code>$points_arr[1][0]</code>
-      <code>$points_arr[1][0]</code>
-      <code>$points_arr[1][1]</code>
-      <code>$points_arr[1][1]</code>
       <code>$temp_point[0]</code>
       <code>$temp_point[0]</code>
       <code>$temp_point[1]</code>
@@ -7288,18 +7250,6 @@
     </MixedArgument>
     <MixedArrayAccess>
       <code><![CDATA[$gis_data[$index]['LINESTRING']['no_of_points']]]></code>
-      <code>$point[0]</code>
-      <code>$point[0]</code>
-      <code>$point[0]</code>
-      <code>$point[1]</code>
-      <code>$point[1]</code>
-      <code>$point[1]</code>
-      <code>$points_arr[$i][0]</code>
-      <code>$points_arr[$i][1]</code>
-      <code>$points_arr[1][0]</code>
-      <code>$points_arr[1][0]</code>
-      <code>$points_arr[1][1]</code>
-      <code>$points_arr[1][1]</code>
       <code>$temp_point[0]</code>
       <code>$temp_point[0]</code>
       <code>$temp_point[1]</code>
@@ -7307,15 +7257,8 @@
     </MixedArrayAccess>
     <MixedAssignment>
       <code>$no_of_points</code>
-      <code>$point</code>
-      <code>$point</code>
-      <code>$point</code>
-      <code>$temp_point</code>
-      <code>$temp_point</code>
     </MixedAssignment>
     <MixedOperand>
-      <code>$point[0]</code>
-      <code>$point[1]</code>
       <code><![CDATA[isset($gis_data[$index]['LINESTRING'][$i]['x'])
                     && trim((string) $gis_data[$index]['LINESTRING'][$i]['x']) != ''
                     ? $gis_data[$index]['LINESTRING'][$i]['x'] : $empty]]></code>
@@ -7333,14 +7276,6 @@
   </file>
   <file src="libraries/classes/Gis/GisMultiLineString.php">
     <MixedArgument>
-      <code>$point[0]</code>
-      <code>$point[0]</code>
-      <code>$point[1]</code>
-      <code>$point[1]</code>
-      <code>$points_arr[1][0]</code>
-      <code>$points_arr[1][0]</code>
-      <code>$points_arr[1][1]</code>
-      <code>$points_arr[1][1]</code>
       <code>$temp_point[0]</code>
       <code>$temp_point[0]</code>
       <code>$temp_point[1]</code>
@@ -7353,18 +7288,6 @@
       <code><![CDATA[$gis_data[$index]['MULTILINESTRING']]]></code>
       <code><![CDATA[$point['x']]]></code>
       <code><![CDATA[$point['y']]]></code>
-      <code>$point[0]</code>
-      <code>$point[0]</code>
-      <code>$point[0]</code>
-      <code>$point[1]</code>
-      <code>$point[1]</code>
-      <code>$point[1]</code>
-      <code>$points[$i][0]</code>
-      <code>$points[$i][1]</code>
-      <code>$points_arr[1][0]</code>
-      <code>$points_arr[1][0]</code>
-      <code>$points_arr[1][1]</code>
-      <code>$points_arr[1][1]</code>
       <code><![CDATA[$row_data['parts'][$i]]]></code>
       <code><![CDATA[$row_data['parts'][$i]['points']]]></code>
       <code>$temp_point[0]</code>
@@ -7377,17 +7300,10 @@
       <code>$no_of_lines</code>
       <code>$no_of_points</code>
       <code>$point</code>
-      <code>$point</code>
-      <code>$point</code>
-      <code>$point</code>
-      <code>$temp_point</code>
-      <code>$temp_point</code>
     </MixedAssignment>
     <MixedOperand>
       <code><![CDATA[$point['x']]]></code>
       <code><![CDATA[$point['y']]]></code>
-      <code>$point[0]</code>
-      <code>$point[1]</code>
       <code><![CDATA[isset($data_row[$i][$j]['x'])
                         && trim((string) $data_row[$i][$j]['x']) != ''
                         ? $data_row[$i][$j]['x'] : $empty]]></code>
@@ -7399,47 +7315,13 @@
       <code>$black</code>
       <code>$line_color</code>
     </PossiblyFalseArgument>
-    <PossiblyUnusedMethod>
-      <code>getShape</code>
-    </PossiblyUnusedMethod>
     <RedundantPropertyInitializationCheck>
       <code>isset(self::$instance)</code>
     </RedundantPropertyInitializationCheck>
   </file>
   <file src="libraries/classes/Gis/GisMultiPoint.php">
-    <MixedArgument>
-      <code>$point</code>
-      <code>$point[0]</code>
-      <code>$point[0]</code>
-      <code>$point[1]</code>
-      <code>$point[1]</code>
-      <code>$points_arr[0][0]</code>
-      <code>$points_arr[0][0]</code>
-      <code>$points_arr[0][1]</code>
-      <code>$points_arr[0][1]</code>
-    </MixedArgument>
     <MixedArrayAccess>
       <code><![CDATA[$gis_data[$index]['MULTIPOINT']['no_of_points']]]></code>
-      <code>$point[0]</code>
-      <code>$point[0]</code>
-      <code>$point[0]</code>
-      <code>$point[0]</code>
-      <code>$point[0]</code>
-      <code>$point[0]</code>
-      <code>$point[0]</code>
-      <code>$point[1]</code>
-      <code>$point[1]</code>
-      <code>$point[1]</code>
-      <code>$point[1]</code>
-      <code>$point[1]</code>
-      <code>$point[1]</code>
-      <code>$point[1]</code>
-      <code>$points[$i][0]</code>
-      <code>$points[$i][1]</code>
-      <code>$points_arr[0][0]</code>
-      <code>$points_arr[0][0]</code>
-      <code>$points_arr[0][1]</code>
-      <code>$points_arr[0][1]</code>
       <code><![CDATA[$row_data['points'][$i]]]></code>
       <code><![CDATA[$row_data['points'][$i]]]></code>
       <code><![CDATA[$row_data['points'][$i]['x']]]></code>
@@ -7447,14 +7329,8 @@
     </MixedArrayAccess>
     <MixedAssignment>
       <code>$no_of_points</code>
-      <code>$point</code>
-      <code>$point</code>
-      <code>$point</code>
-      <code>$point</code>
     </MixedAssignment>
     <MixedOperand>
-      <code>$point[0]</code>
-      <code>$point[1]</code>
       <code><![CDATA[$row_data['points'][$i]['x']]]></code>
       <code><![CDATA[$row_data['points'][$i]['y']]]></code>
       <code><![CDATA[isset($gis_data[$index]['MULTIPOINT'][$i]['x'])
@@ -7468,9 +7344,6 @@
       <code>$black</code>
       <code>$point_color</code>
     </PossiblyFalseArgument>
-    <PossiblyUnusedMethod>
-      <code>getShape</code>
-    </PossiblyUnusedMethod>
     <RedundantPropertyInitializationCheck>
       <code>isset(self::$instance)</code>
     </RedundantPropertyInitializationCheck>
@@ -7505,12 +7378,6 @@
       <code>$label_point[1]</code>
       <code><![CDATA[$point['x']]]></code>
       <code><![CDATA[$point['y']]]></code>
-      <code>$point[0]</code>
-      <code>$point[1]</code>
-      <code>$points[$i][0]</code>
-      <code>$points[$i][1]</code>
-      <code>$points_arr[0][0]</code>
-      <code>$points_arr[0][1]</code>
       <code><![CDATA[$ring1['isOuter']]]></code>
       <code><![CDATA[$ring1['pointOnSurface']]]></code>
       <code><![CDATA[$ring2['isOuter']]]></code>
@@ -7553,7 +7420,6 @@
       <code>$no_of_points</code>
       <code>$no_of_polygons</code>
       <code>$point</code>
-      <code>$point</code>
       <code>$ring</code>
       <code>$ring</code>
       <code>$ring</code>
@@ -7566,10 +7432,6 @@
       <code><![CDATA[$innerPoint['y']]]></code>
       <code><![CDATA[$point['x']]]></code>
       <code><![CDATA[$point['y']]]></code>
-      <code>$point[0]</code>
-      <code>$point[1]</code>
-      <code>$points_arr[0][0]</code>
-      <code>$points_arr[0][1]</code>
       <code><![CDATA[isset($data_row[$k][$i][$j]['x'])
                             && trim((string) $data_row[$k][$i][$j]['x']) != ''
                             ? $data_row[$k][$i][$j]['x'] : $empty]]></code>
@@ -7581,46 +7443,18 @@
       <code>$black</code>
       <code>$fill_color</code>
     </PossiblyFalseArgument>
-    <PossiblyUnusedMethod>
-      <code>getShape</code>
-    </PossiblyUnusedMethod>
     <RedundantPropertyInitializationCheck>
       <code>isset(self::$instance)</code>
     </RedundantPropertyInitializationCheck>
   </file>
   <file src="libraries/classes/Gis/GisPoint.php">
-    <MixedArgument>
-      <code>$points_arr[0]</code>
-      <code>$points_arr[0][0]</code>
-      <code>$points_arr[0][0]</code>
-      <code>$points_arr[0][0]</code>
-      <code>$points_arr[0][0]</code>
-      <code>$points_arr[0][1]</code>
-      <code>$points_arr[0][1]</code>
-      <code>$points_arr[0][1]</code>
-      <code>$points_arr[0][1]</code>
-    </MixedArgument>
     <MixedArrayAccess>
       <code><![CDATA[$gis_data[$index]['POINT']['x']]]></code>
       <code><![CDATA[$gis_data[$index]['POINT']['x']]]></code>
       <code><![CDATA[$gis_data[$index]['POINT']['y']]]></code>
       <code><![CDATA[$gis_data[$index]['POINT']['y']]]></code>
-      <code>$points[0][0]</code>
-      <code>$points[0][1]</code>
-      <code>$points_arr[0][0]</code>
-      <code>$points_arr[0][0]</code>
-      <code>$points_arr[0][0]</code>
-      <code>$points_arr[0][0]</code>
-      <code>$points_arr[0][0]</code>
-      <code>$points_arr[0][1]</code>
-      <code>$points_arr[0][1]</code>
-      <code>$points_arr[0][1]</code>
-      <code>$points_arr[0][1]</code>
-      <code>$points_arr[0][1]</code>
     </MixedArrayAccess>
     <MixedOperand>
-      <code>$points_arr[0][0]</code>
-      <code>$points_arr[0][1]</code>
       <code><![CDATA[$row_data['x'] ?? '']]></code>
       <code><![CDATA[$row_data['y'] ?? '']]></code>
       <code><![CDATA[isset($gis_data[$index]['POINT']['x'])
@@ -7634,9 +7468,6 @@
       <code>$black</code>
       <code>$point_color</code>
     </PossiblyFalseArgument>
-    <PossiblyUnusedMethod>
-      <code>getShape</code>
-    </PossiblyUnusedMethod>
     <RedundantPropertyInitializationCheck>
       <code>isset(self::$instance)</code>
     </RedundantPropertyInitializationCheck>
@@ -7646,10 +7477,6 @@
       <code>$points_arr</code>
     </ArgumentTypeCoercion>
     <MixedArgument>
-      <code>$points_arr[2]</code>
-      <code>$points_arr[2]</code>
-      <code>$points_arr[3]</code>
-      <code>$points_arr[3]</code>
       <code>($y1 - $y0) ** 2 + ($x0 - $x1) ** 2</code>
     </MixedArgument>
     <MixedArrayAccess>
@@ -7673,12 +7500,6 @@
       <code><![CDATA[$p2['y']]]></code>
       <code><![CDATA[$p2['y']]]></code>
       <code><![CDATA[$p2['y']]]></code>
-      <code>$point[0]</code>
-      <code>$point[1]</code>
-      <code>$points[$i][0]</code>
-      <code>$points[$i][1]</code>
-      <code>$points_arr[0][0]</code>
-      <code>$points_arr[0][1]</code>
       <code><![CDATA[$polygon[$last]['x']]]></code>
       <code><![CDATA[$polygon[$last]['y']]]></code>
       <code><![CDATA[$polygon[0]['x']]]></code>
@@ -7710,7 +7531,6 @@
       <code>$p1</code>
       <code>$p1</code>
       <code>$p2</code>
-      <code>$point</code>
       <code><![CDATA[$pointA['x']]]></code>
       <code><![CDATA[$pointA['y']]]></code>
       <code><![CDATA[$pointB['x']]]></code>
@@ -7736,10 +7556,6 @@
       <code><![CDATA[$pointA['x']]]></code>
       <code><![CDATA[$pointB['x']]]></code>
       <code><![CDATA[$point['y']]]></code>
-      <code>$point[0]</code>
-      <code>$point[1]</code>
-      <code>$points_arr[0][0]</code>
-      <code>$points_arr[0][1]</code>
       <code><![CDATA[$ring[$i]['x']]]></code>
       <code><![CDATA[$ring[$i]['x'] * $ring[$j]['y']]]></code>
       <code><![CDATA[$ring[$i]['y']]]></code>
@@ -7863,8 +7679,6 @@
       <code>$ratio</code>
       <code>$scale</code>
       <code>$scale</code>
-      <code><![CDATA[$this->prepareDataSet($this->data, $scale_data, 'ol', '')]]></code>
-      <code><![CDATA[$this->prepareDataSet($this->data, $scale_data, 'svg', '')]]></code>
       <code><![CDATA[$this->settings['height']]]></code>
       <code><![CDATA[$this->settings['height']]]></code>
       <code><![CDATA[$this->settings['height'] / $scale]]></code>
@@ -7877,10 +7691,6 @@
       <code>null</code>
       <code>null</code>
     </NullArgument>
-    <PossiblyFalseOperand>
-      <code>$results</code>
-      <code>$results</code>
-    </PossiblyFalseOperand>
     <PossiblyInvalidArgument>
       <code>$results</code>
     </PossiblyInvalidArgument>
@@ -8245,7 +8055,6 @@
       <code>$cellValue</code>
       <code>$charset</code>
       <code>$collation</code>
-      <code>$createDb</code>
       <code>$importPlugin</code>
       <code>$size</code>
       <code>$size</code>
@@ -8728,14 +8537,6 @@
       <code>USE_UTF_STRINGS</code>
     </UndefinedConstant>
   </file>
-  <file src="libraries/classes/ListAbstract.php">
-    <MixedInferredReturnType>
-      <code>string</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement>
-      <code><![CDATA[$this->getEmpty()]]></code>
-    </MixedReturnStatement>
-  </file>
   <file src="libraries/classes/ListDatabase.php">
     <InvalidArrayOffset>
       <code><![CDATA[$GLOBALS['cfg']['Server']['hide_db']]]></code>
@@ -8743,15 +8544,9 @@
     <MixedArgumentTypeCoercion>
       <code><![CDATA[usort($database_list, 'strnatcasecmp')]]></code>
     </MixedArgumentTypeCoercion>
-    <MixedInferredReturnType>
-      <code>string</code>
-    </MixedInferredReturnType>
     <MixedOperand>
       <code><![CDATA[$GLOBALS['cfg']['Server']['hide_db']]]></code>
     </MixedOperand>
-    <MixedReturnStatement>
-      <code><![CDATA[$this->getEmpty()]]></code>
-    </MixedReturnStatement>
   </file>
   <file src="libraries/classes/Logging.php">
     <MixedAssignment>
@@ -8860,7 +8655,6 @@
     </InvalidPropertyAssignmentValue>
     <MixedArgument>
       <code>$db</code>
-      <code>$hiddenCounts[$db]</code>
       <code>$item</code>
       <code>$item</code>
       <code>$item</code>
@@ -9172,12 +8966,9 @@
       <code>$dependents</code>
       <code>$dependents</code>
       <code>$dependents</code>
-      <code>$distinctValCount[$column]</code>
-      <code>$distinctValCount[$partialKey]</code>
       <code><![CDATA[$dropCols['nonpk']]]></code>
       <code><![CDATA[$dropCols['pk']]]></code>
       <code>$key</code>
-      <code>$partialKey</code>
       <code>$table</code>
       <code>$table</code>
       <code>$table</code>
@@ -9207,17 +8998,10 @@
       <code><![CDATA[$dropCols['pk']]]></code>
       <code><![CDATA[$res[0][$column . '_cnt']]]></code>
     </MixedArrayAccess>
-    <MixedArrayOffset>
-      <code>$dependencyList[$partialKey]</code>
-      <code>$distinctValCount[$partialKey]</code>
-      <code>$result[$column]</code>
-    </MixedArrayOffset>
     <MixedAssignment>
       <code>$arrDependson</code>
       <code>$col</code>
       <code>$cols</code>
-      <code>$column</code>
-      <code>$column</code>
       <code>$dependent</code>
       <code>$dependents</code>
       <code>$dependents</code>
@@ -9225,9 +9009,7 @@
       <code>$dropCols</code>
       <code>$element</code>
       <code>$key</code>
-      <code>$partialKey</code>
       <code>$pkColCnt</code>
-      <code>$result[$column]</code>
       <code>$table</code>
       <code>$table</code>
       <code>$tablesList</code>
@@ -9235,9 +9017,6 @@
       <code>$type</code>
     </MixedAssignment>
     <MixedOperand>
-      <code>$column</code>
-      <code>$column</code>
-      <code>$column</code>
       <code>$element</code>
     </MixedOperand>
     <PossiblyNullArgument>
@@ -9248,6 +9027,9 @@
       <code><![CDATA[$def['Type']]]></code>
       <code><![CDATA[$def['Type']]]></code>
     </PossiblyUndefinedArrayOffset>
+    <RedundantCast>
+      <code>(string) $dependon</code>
+    </RedundantCast>
   </file>
   <file src="libraries/classes/Operations.php">
     <DeprecatedMethod>
@@ -10218,15 +10000,6 @@
       <code><![CDATA[$GLOBALS['sql_auto_increments']]]></code>
       <code><![CDATA[$GLOBALS['sql_auto_increments']]]></code>
       <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
       <code><![CDATA[$GLOBALS['sql_create_database']]]></code>
       <code><![CDATA[$GLOBALS['sql_delayed']]]></code>
       <code><![CDATA[$GLOBALS['sql_disable_fk']]]></code>
@@ -10259,27 +10032,6 @@
     <MixedArgument>
       <code><![CDATA[$GLOBALS['sql_auto_increments']]]></code>
       <code><![CDATA[$GLOBALS['sql_auto_increments']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
       <code><![CDATA[$GLOBALS['sql_header_comment']]]></code>
       <code><![CDATA[$GLOBALS['sql_indexes']]]></code>
       <code><![CDATA[$GLOBALS['sql_indexes']]]></code>
@@ -10333,10 +10085,6 @@
     </MixedArrayTypeCoercion>
     <MixedAssignment>
       <code><![CDATA[$GLOBALS['sql_auto_increments']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
-      <code><![CDATA[$GLOBALS['sql_backquotes']]]></code>
       <code><![CDATA[$GLOBALS['sql_drop_table']]]></code>
       <code><![CDATA[$GLOBALS['sql_indexes']]]></code>
       <code><![CDATA[$GLOBALS['sql_indexes_query']]]></code>
@@ -10953,9 +10701,7 @@
       <code><![CDATA[$GLOBALS['csv_new_line']]]></code>
       <code>$col_name</code>
       <code>$columnNames</code>
-      <code>$db_name</code>
       <code><![CDATA[$field['Field']]]></code>
-      <code>$options</code>
     </MixedArgument>
     <MixedArgumentTypeCoercion>
       <code>$result</code>
@@ -10996,12 +10742,13 @@
       <code>$columnNames</code>
     </MixedReturnStatement>
     <PossiblyInvalidArgument>
-      <code>$newDb</code>
+      <code>$db_name</code>
+      <code>$sqlStatements</code>
     </PossiblyInvalidArgument>
     <PossiblyInvalidCast>
       <code><![CDATA[$_REQUEST['csv_new_db_name']]]></code>
       <code><![CDATA[$_REQUEST['csv_new_tbl_name']]]></code>
-      <code>$newDb</code>
+      <code>$db_name</code>
     </PossiblyInvalidCast>
     <PossiblyInvalidOperand>
       <code>$max_lines</code>
@@ -11080,8 +10827,6 @@
     <MixedArgument>
       <code>$cell</code>
       <code>$cell</code>
-      <code>$db_name</code>
-      <code>$options</code>
       <code>$table[0]</code>
       <code>$table[1]</code>
       <code>$table[2][0]</code>
@@ -11112,8 +10857,14 @@
       <code><![CDATA[! $GLOBALS['finished']]]></code>
       <code><![CDATA[$GLOBALS['finished']]]></code>
     </RedundantCondition>
+    <ReferenceConstraintViolation>
+      <code>$sqlStatements</code>
+    </ReferenceConstraintViolation>
   </file>
   <file src="libraries/classes/Plugins/Import/ImportOds.php">
+    <InvalidArgument>
+      <code>$sqlStatements</code>
+    </InvalidArgument>
     <InvalidArrayOffset>
       <code><![CDATA[$GLOBALS['timeout_passed']]]></code>
     </InvalidArrayOffset>
@@ -11121,9 +10872,7 @@
       <code>$cell_attrs</code>
       <code>$col_names</code>
       <code>$col_names</code>
-      <code>$db_name</code>
       <code>$max_cols</code>
-      <code>$options</code>
       <code>$rows</code>
       <code>$rows[$j][Import::TBL_NAME]</code>
       <code>$tables</code>
@@ -11286,11 +11035,7 @@
     </PossiblyUnusedReturnValue>
     <RedundantCast>
       <code><![CDATA[(string) $GLOBALS['db']]]></code>
-      <code><![CDATA[(string) $GLOBALS['db']]]></code>
     </RedundantCast>
-    <UnusedVariable>
-      <code>$null_param</code>
-    </UnusedVariable>
   </file>
   <file src="libraries/classes/Plugins/Import/ImportSql.php">
     <InvalidArrayOffset>
@@ -11382,9 +11127,6 @@
     <PossiblyUnusedReturnValue>
       <code>string[]</code>
     </PossiblyUnusedReturnValue>
-    <RedundantCast>
-      <code><![CDATA[(string) $GLOBALS['db']]]></code>
-    </RedundantCast>
     <UnnecessaryVarAnnotation>
       <code>SimpleXMLElement</code>
     </UnnecessaryVarAnnotation>
@@ -11528,11 +11270,6 @@
     <UnusedClass>
       <code>UploadSession</code>
     </UnusedClass>
-  </file>
-  <file src="libraries/classes/Plugins/ImportPlugin.php">
-    <RedundantCastGivenDocblockType>
-      <code>(string) $currentDb</code>
-    </RedundantCastGivenDocblockType>
   </file>
   <file src="libraries/classes/Plugins/Plugin.php">
     <PossiblyUnusedMethod>
@@ -13457,9 +13194,6 @@
       <code><![CDATA[$GLOBALS['show_as_php']]]></code>
       <code><![CDATA[$GLOBALS['show_as_php']]]></code>
     </InvalidArrayOffset>
-    <LessSpecificReturnStatement>
-      <code>$unlimNumRows</code>
-    </LessSpecificReturnStatement>
     <MixedArgument>
       <code><![CDATA[$columns[$indexColumnName]['Extra']]]></code>
       <code><![CDATA[$extraData['error']]]></code>
@@ -13470,8 +13204,6 @@
       <code><![CDATA[$oneResult['Status']]]></code>
       <code>$sortCol</code>
       <code><![CDATA[$statement->expr]]></code>
-      <code>$unlimNumRows</code>
-      <code>$unlimNumRows</code>
       <code>Message::sanitize($warning)</code>
     </MixedArgument>
     <MixedArgumentTypeCoercion>
@@ -13514,10 +13246,6 @@
       <code>$resultSetColumnNames[]</code>
       <code>$sortCol</code>
       <code>$unlimNumRows</code>
-      <code>$unlimNumRows</code>
-      <code>$unlimNumRows</code>
-      <code>$unlimNumRows</code>
-      <code>$unlimNumRows</code>
     </MixedAssignment>
     <MixedInferredReturnType>
       <code>int</code>
@@ -13545,6 +13273,7 @@
       <code>$pos</code>
       <code>$row[$column]</code>
       <code>$unlimNumRows</code>
+      <code>$unlimNumRows</code>
       <code>@((int) ceil($numberOfLine / $maxRows) - 1) * $maxRows</code>
     </MixedReturnStatement>
     <MixedReturnTypeCoercion>
@@ -13554,9 +13283,6 @@
     <NoValue>
       <code><![CDATA[$statementInfo->statement->where]]></code>
     </NoValue>
-    <NullableReturnStatement>
-      <code>$unlimNumRows</code>
-    </NullableReturnStatement>
     <PossiblyInvalidArgument>
       <code><![CDATA[$_POST['bkm_label']]]></code>
       <code><![CDATA[$_POST['dropped_column'] ?? null]]></code>
@@ -13687,13 +13413,6 @@
     </PossiblyNullArgument>
   </file>
   <file src="libraries/classes/Table.php">
-    <InvalidArgument>
-      <code>$newDb</code>
-      <code>$sourceDb</code>
-      <code>$sourceDb</code>
-      <code>$targetDb</code>
-      <code>$targetDb</code>
-    </InvalidArgument>
     <InvalidArrayOffset>
       <code><![CDATA[$GLOBALS['add_constraints']]]></code>
       <code><![CDATA[$GLOBALS['errorUrl']]]></code>
@@ -13829,7 +13548,6 @@
       <code>$constraintName</code>
       <code>$currCreateTime</code>
       <code>$eachCol</code>
-      <code>$exactRowsCached</code>
       <code>$foreignDb</code>
       <code>$foreignDb</code>
       <code>$foreignField</code>
@@ -13853,7 +13571,6 @@
       <code>$tableCollation</code>
       <code>$tableComment</code>
       <code>$tableNumRowInfo</code>
-      <code>$tableNumRowInfo</code>
       <code>$tableOptions</code>
       <code>$tableRowFormat</code>
       <code>$tableStorageEngine</code>
@@ -13866,7 +13583,6 @@
     </MixedAssignment>
     <MixedInferredReturnType>
       <code>array</code>
-      <code>string</code>
       <code>string</code>
       <code>string</code>
       <code>string</code>
@@ -13895,7 +13611,6 @@
       <code><![CDATA[$tableCollation ?? '']]></code>
       <code><![CDATA[$tableCollation ?? '']]></code>
       <code>$tableComment</code>
-      <code>$tableRowFormat</code>
       <code><![CDATA[end($this->errors)]]></code>
       <code><![CDATA[end($this->messages)]]></code>
       <code>json_decode($value, true)</code>
@@ -14153,7 +13868,7 @@
       <code><![CDATA[$GLOBALS['cfg']['environment']]]></code>
     </InvalidArrayOffset>
   </file>
-  <file src="libraries/classes/Theme.php">
+  <file src="libraries/classes/Theme/Theme.php">
     <MixedArgument>
       <code><![CDATA[$data['name']]]></code>
       <code><![CDATA[$data['version']]]></code>
@@ -14165,15 +13880,19 @@
       <code>return false;</code>
     </UnevaluatedCode>
   </file>
-  <file src="libraries/classes/ThemeManager.php">
+  <file src="libraries/classes/Theme/ThemeManager.php">
     <MixedInferredReturnType>
+      <code>string|false</code>
       <code>string|false</code>
     </MixedInferredReturnType>
     <MixedReturnStatement>
       <code><![CDATA[$GLOBALS['config']->getCookie($name)]]></code>
       <code><![CDATA[$GLOBALS['config']->getCookie($name)]]></code>
+      <code><![CDATA[$GLOBALS['config']->getCookie($name)]]></code>
+      <code><![CDATA[$GLOBALS['config']->getCookie($name)]]></code>
     </MixedReturnStatement>
     <NullableReturnStatement>
+      <code><![CDATA[$GLOBALS['config']->getCookie($name)]]></code>
       <code><![CDATA[$GLOBALS['config']->getCookie($name)]]></code>
     </NullableReturnStatement>
     <PossiblyNullArrayOffset>
@@ -14183,6 +13902,7 @@
       <code>$theme</code>
     </PossiblyNullPropertyAssignmentValue>
     <PossiblyNullReference>
+      <code>issetCookie</code>
       <code>issetCookie</code>
     </PossiblyNullReference>
     <RedundantCastGivenDocblockType>
@@ -14688,7 +14408,6 @@
       <code>$p</code>
       <code>$p</code>
       <code>$row</code>
-      <code>$rowCount</code>
       <code>$table</code>
       <code>$table</code>
       <code><![CDATA[$table['disp_name']]]></code>
@@ -14697,7 +14416,6 @@
     </MixedAssignment>
     <MixedInferredReturnType>
       <code>array</code>
-      <code>int</code>
       <code>int</code>
     </MixedInferredReturnType>
     <MixedOperand>
@@ -14709,8 +14427,6 @@
     <MixedReturnStatement>
       <code><![CDATA[$_SESSION['tmpval']['table_limit_offset']]]></code>
       <code><![CDATA[$_SESSION['tmpval']['table_limit_offset']]]></code>
-      <code>$rowCount</code>
-      <code>$rowCount</code>
       <code>$tableGroups</code>
     </MixedReturnStatement>
     <PossiblyFalseOperand>
@@ -15556,183 +15272,6 @@
     <DocblockTypeContradiction>
       <code>assertSame</code>
     </DocblockTypeContradiction>
-    <InvalidReturnStatement>
-      <code><![CDATA[[
-            [
-                'all',
-                '1001',
-                'grid_edit',
-                $meta,
-                [],
-                $url_params,
-                false,
-                null,
-                ['https://www.example.com/'],
-                'class="disableAjax">[BLOB - 4 B]</a>'
-                . '</td>' . "\n",
-            ],
-            [
-                'noblob',
-                '1001',
-                'grid_edit',
-                $meta,
-                [],
-                $url_params,
-                false,
-                $transformation_plugin,
-                [],
-                '<td class="text-start grid_edit transformed hex">'
-                . '1001'
-                . '</td>' . "\n",
-            ],
-            [
-                'noblob',
-                null,
-                'grid_edit',
-                $meta2,
-                [],
-                $url_params,
-                false,
-                $transformation_plugin,
-                [],
-                '<td data-decimals="0"' . "\n"
-                . '    data-type="string"' . "\n"
-                . '        class="grid_edit null">' . "\n"
-                . '    <em>NULL</em>' . "\n"
-                . '</td>' . "\n",
-            ],
-            [
-                'all',
-                'foo bar baz',
-                'grid_edit',
-                $meta2,
-                [],
-                $url_params,
-                false,
-                null,
-                [],
-                '<td data-decimals="0" data-type="string" '
-                . 'data-originallength="11" '
-                . 'class="grid_edit pre_wrap">foo bar baz</td>' . "\n",
-            ],
-            [
-                'all',
-                'foo bar baz',
-                'grid_edit',
-                $meta2,
-                [],
-                $url_params,
-                false,
-                $transformation_plugin_external,
-                [],
-                '<td data-decimals="0" data-type="string" '
-                . 'data-originallength="11" '
-                . 'class="grid_edit text-nowrap transformed">foo bar baz</td>' . "\n",
-            ],
-            [
-                'all',
-                '2020-09-20 16:35:00',
-                'grid_edit',
-                $meta3,
-                [],
-                $url_params,
-                false,
-                null,
-                [],
-                '<td data-decimals="0" data-type="datetime" '
-                . 'data-originallength="19" '
-                . 'class="grid_edit text-nowrap">2020-09-20 16:35:00</td>' . "\n",
-            ],
-        ]]]></code>
-      <code><![CDATA[[
-            [
-                true,
-                true,
-                'BLOB',
-                '1001',
-                null,
-                [],
-                $meta,
-                $url_params,
-                null,
-                'class="disableAjax">1001</a>',
-            ],
-            [
-                true,
-                true,
-                'BLOB',
-                hex2bin('123456'),
-                null,
-                [],
-                $meta,
-                $url_params,
-                null,
-                'class="disableAjax">0x123456</a>',
-            ],
-            [
-                true,
-                false,
-                'BLOB',
-                '1001',
-                null,
-                [],
-                $meta,
-                $url_params,
-                null,
-                'class="disableAjax">[BLOB - 4 B]</a>',
-            ],
-            [
-                false,
-                false,
-                'BINARY',
-                '1001',
-                $transformation_plugin,
-                [],
-                $meta,
-                $url_params,
-                null,
-                '1001',
-            ],
-            [
-                false,
-                true,
-                'GEOMETRY',
-                null,
-                null,
-                [],
-                $meta,
-                $url_params,
-                null,
-                '[GEOMETRY - NULL]',
-            ],
-        ]]]></code>
-    </InvalidReturnStatement>
-    <InvalidReturnType>
-      <code>array{array{
-     *   bool,
-     *   bool,
-     *   string,
-     *   string|null,
-     *   TransformationsPlugin|null,
-     *   array|object,
-     *   object,
-     *   array,
-     *   bool|null,
-     *   string
-     * }}</code>
-      <code>array{array{
-     *   string,
-     *   string|null,
-     *   string,
-     *   object,
-     *   array,
-     *   array,
-     *   bool,
-     *   TransformationsPlugin|null,
-     *   array,
-     *   string
-     * }}</code>
-    </InvalidReturnType>
     <MixedArgument>
       <code>$output</code>
       <code>$output</code>
@@ -15874,12 +15413,6 @@
       <code>testFactory</code>
     </PossiblyInvalidArgument>
   </file>
-  <file src="test/classes/Gis/GisGeomTestCase.php">
-    <UndefinedMethod>
-      <code>testGenerateParams</code>
-      <code>testScaleRow</code>
-    </UndefinedMethod>
-  </file>
   <file src="test/classes/Gis/GisGeometryCollectionTest.php">
     <MixedInferredReturnType>
       <code>array</code>
@@ -15887,15 +15420,12 @@
       <code>array</code>
       <code>array</code>
     </MixedInferredReturnType>
-    <PossiblyUnusedMethod>
-      <code>providerForTestGenerateParams</code>
-      <code>providerForTestScaleRow</code>
-    </PossiblyUnusedMethod>
   </file>
   <file src="test/classes/Gis/GisGeometryTest.php">
+    <MixedAssignment>
+      <code>$points</code>
+    </MixedAssignment>
     <MixedInferredReturnType>
-      <code>array</code>
-      <code>array</code>
       <code>array</code>
       <code>array</code>
       <code>array</code>
@@ -15906,42 +15436,24 @@
       <code>array</code>
       <code>array</code>
       <code>array</code>
+      <code>array</code>
     </MixedInferredReturnType>
-    <PossiblyUnusedMethod>
-      <code>providerForTestGenerateParams</code>
-      <code>providerForTestGenerateWkt</code>
-      <code>providerForTestScaleRow</code>
-    </PossiblyUnusedMethod>
   </file>
   <file src="test/classes/Gis/GisMultiLineStringTest.php">
     <MixedInferredReturnType>
       <code>array</code>
       <code>array</code>
       <code>array</code>
+      <code>array</code>
     </MixedInferredReturnType>
-    <PossiblyUnusedMethod>
-      <code>providerForTestGenerateParams</code>
-      <code>providerForTestGenerateWkt</code>
-      <code>providerForTestScaleRow</code>
-    </PossiblyUnusedMethod>
-    <UndefinedMethod>
-      <code>getShape</code>
-    </UndefinedMethod>
   </file>
   <file src="test/classes/Gis/GisMultiPointTest.php">
     <MixedInferredReturnType>
       <code>array</code>
       <code>array</code>
       <code>array</code>
+      <code>array</code>
     </MixedInferredReturnType>
-    <PossiblyUnusedMethod>
-      <code>providerForTestGenerateParams</code>
-      <code>providerForTestGenerateWkt</code>
-      <code>providerForTestScaleRow</code>
-    </PossiblyUnusedMethod>
-    <UndefinedMethod>
-      <code>getShape</code>
-    </UndefinedMethod>
   </file>
   <file src="test/classes/Gis/GisMultiPolygonTest.php">
     <MixedArrayAssignment>
@@ -15957,15 +15469,8 @@
       <code>array</code>
       <code>array</code>
       <code>array</code>
+      <code>array</code>
     </MixedInferredReturnType>
-    <PossiblyUnusedMethod>
-      <code>providerForTestGenerateParams</code>
-      <code>providerForTestGenerateWkt</code>
-      <code>providerForTestScaleRow</code>
-    </PossiblyUnusedMethod>
-    <UndefinedMethod>
-      <code>getShape</code>
-    </UndefinedMethod>
   </file>
   <file src="test/classes/Gis/GisPointTest.php">
     <MixedInferredReturnType>
@@ -15973,15 +15478,8 @@
       <code>array</code>
       <code>array</code>
       <code>array</code>
+      <code>array</code>
     </MixedInferredReturnType>
-    <PossiblyUnusedMethod>
-      <code>providerForTestGenerateParams</code>
-      <code>providerForTestGenerateWkt</code>
-      <code>providerForTestScaleRow</code>
-    </PossiblyUnusedMethod>
-    <UndefinedMethod>
-      <code>getShape</code>
-    </UndefinedMethod>
   </file>
   <file src="test/classes/Gis/GisPolygonTest.php">
     <MixedArrayAccess>
@@ -16008,19 +15506,8 @@
       <code>array</code>
       <code>array</code>
       <code>array</code>
+      <code>array</code>
     </MixedInferredReturnType>
-    <PossiblyUnusedMethod>
-      <code>providerForTestGenerateParams</code>
-      <code>providerForTestGenerateWkt</code>
-      <code>providerForTestScaleRow</code>
-    </PossiblyUnusedMethod>
-    <UndefinedMethod>
-      <code>area</code>
-      <code>getPointOnSurface</code>
-      <code>isOuterRing</code>
-      <code>isPointInsidePolygon</code>
-      <code>isPointInsidePolygon</code>
-    </UndefinedMethod>
   </file>
   <file src="test/classes/Gis/GisVisualizationTest.php">
     <MixedAssignment>
@@ -16198,11 +15685,6 @@
     <MixedInferredReturnType>
       <code>array</code>
     </MixedInferredReturnType>
-  </file>
-  <file src="test/classes/ListDatabaseTest.php">
-    <InvalidArgument>
-      <code><![CDATA['single_db']]></code>
-    </InvalidArgument>
   </file>
   <file src="test/classes/MessageTest.php">
     <MixedInferredReturnType>
@@ -16647,12 +16129,12 @@
       <code>array</code>
     </MixedInferredReturnType>
   </file>
-  <file src="test/classes/ThemeManagerTest.php">
+  <file src="test/classes/Theme/ThemeManagerTest.php">
     <RedundantCondition>
       <code>assertIsArray</code>
     </RedundantCondition>
   </file>
-  <file src="test/classes/ThemeTest.php">
+  <file src="test/classes/Theme/ThemeTest.php">
     <InvalidArrayOffset>
       <code><![CDATA[$GLOBALS['theme']]]></code>
     </InvalidArrayOffset>

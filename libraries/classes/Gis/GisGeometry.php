@@ -10,15 +10,15 @@ namespace PhpMyAdmin\Gis;
 use PhpMyAdmin\Image\ImageWrapper;
 use TCPDF;
 
+use function array_map;
 use function defined;
 use function explode;
-use function floatval;
+use function json_encode;
 use function mb_strripos;
 use function mb_substr;
 use function mt_getrandmax;
 use function preg_match;
 use function random_int;
-use function sprintf;
 use function str_replace;
 use function strtoupper;
 use function trim;
@@ -79,20 +79,18 @@ abstract class GisGeometry
      * Prepares the JavaScript related to a row in the GIS dataset
      * to visualize it with OpenLayers.
      *
-     * @param string $spatial    GIS data object
-     * @param int    $srid       spatial reference ID
-     * @param string $label      label for the GIS data object
-     * @param int[]  $color      color for the GIS data object
-     * @param array  $scale_data array containing data related to scaling
+     * @param string $spatial GIS data object
+     * @param int    $srid    spatial reference ID
+     * @param string $label   label for the GIS data object
+     * @param int[]  $color   color for the GIS data object
      *
      * @return string the JavaScript related to a row in the GIS dataset
      */
     abstract public function prepareRowAsOl(
-        $spatial,
+        string $spatial,
         int $srid,
         string $label,
         array $color,
-        array $scale_data,
     ): string;
 
     /**
@@ -114,31 +112,6 @@ abstract class GisGeometry
      * @return string WKT with the set of parameters passed by the GIS editor
      */
     abstract public function generateWkt(array $gis_data, $index, $empty = ''): string;
-
-    /**
-     * Returns OpenLayers.Bounds object that correspond to the bounds of GIS data.
-     *
-     * @param int   $srid       spatial reference ID
-     * @param array $scale_data data related to scaling
-     *
-     * @return string OpenLayers.Bounds object that
-     *                correspond to the bounds of GIS data
-     */
-    protected function getBoundsForOl(int $srid, array $scale_data): string
-    {
-        return sprintf(
-            'var minLoc = [%s, %s];'
-            . 'var maxLoc = [%s, %s];'
-            . 'var ext = ol.extent.boundingExtent([minLoc, maxLoc]);'
-            . 'ext = ol.proj.transformExtent(ext, ol.proj.get("EPSG:%s"), ol.proj.get(\'EPSG:3857\'));'
-            . 'map.getView().fit(ext, map.getSize());',
-            $scale_data['minX'],
-            $scale_data['minY'],
-            $scale_data['maxX'],
-            $scale_data['maxY'],
-            $srid,
-        );
-    }
 
     /**
      * Updates the min, max values with the given point set.
@@ -233,9 +206,9 @@ abstract class GisGeometry
      * @param array|null $scale_data data related to scaling
      * @param bool       $linear     if true, as a 1D array, else as a 2D array
      *
-     * @return array scaled points
+     * @return float[]|float[][] scaled points
      */
-    protected function extractPoints($point_set, $scale_data, $linear = false): array
+    private function extractPointsInternal(string $point_set, array|null $scale_data, bool $linear): array
     {
         $points_arr = [];
 
@@ -247,28 +220,25 @@ abstract class GisGeometry
             // Extract coordinates of the point
             $coordinates = explode(' ', $point);
 
-            if (isset($coordinates[0], $coordinates[1]) && trim($coordinates[0]) != '' && trim($coordinates[1]) != '') {
-                if ($scale_data != null) {
-                    $x = ($coordinates[0] - $scale_data['x']) * $scale_data['scale'];
-                    $y = $scale_data['height']
-                        - ($coordinates[1] - $scale_data['y']) * $scale_data['scale'];
+            if (isset($coordinates[1]) && trim($coordinates[0]) != '' && trim($coordinates[1]) != '') {
+                if ($scale_data === null) {
+                    $x = (float) $coordinates[0];
+                    $y = (float) $coordinates[1];
                 } else {
-                    $x = floatval(trim($coordinates[0]));
-                    $y = floatval(trim($coordinates[1]));
+                    $x = (float) (((float) $coordinates[0] - $scale_data['x']) * $scale_data['scale']);
+                    $y = (float) ($scale_data['height']
+                        - ((float) $coordinates[1] - $scale_data['y']) * $scale_data['scale']);
                 }
             } else {
-                $x = 0;
-                $y = 0;
+                $x = 0.0;
+                $y = 0.0;
             }
 
-            if (! $linear) {
-                $points_arr[] = [
-                    $x,
-                    $y,
-                ];
-            } else {
+            if ($linear) {
                 $points_arr[] = $x;
                 $points_arr[] = $y;
+            } else {
+                $points_arr[] = [$x, $y];
             }
         }
 
@@ -276,121 +246,88 @@ abstract class GisGeometry
     }
 
     /**
-     * Generates JavaScript for adding an array of polygons to OpenLayers.
+     * Extracts points, scales and returns them as an array.
      *
-     * @param array $polygons x and y coordinates for each polygon
-     * @param int   $srid     spatial reference id
+     * @param string     $wktCoords  string of comma separated points
+     * @param array|null $scale_data data related to scaling
      *
-     * @return string JavaScript for adding an array of polygons to OpenLayers
+     * @return float[][] scaled points
      */
-    protected function getPolygonArrayForOpenLayers(array $polygons, int $srid): string
+    protected function extractPoints1d(string $wktCoords, array|null $scale_data): array
     {
-        $ol_array = 'var polygonArray = [];';
-        foreach ($polygons as $polygon) {
-            $rings = explode('),(', $polygon);
-            $ol_array .= $this->getPolygonForOpenLayers($rings, $srid);
-            $ol_array .= 'polygonArray.push(polygon);';
+        /** @var float[][] $points_arr */
+        $points_arr = $this->extractPointsInternal($wktCoords, $scale_data, false);
+
+        return $points_arr;
+    }
+
+    /**
+     * Extracts points, scales and returns them as an linear array.
+     *
+     * @param string     $wktCoords  string of comma separated points
+     * @param array|null $scale_data data related to scaling
+     *
+     * @return float[] scaled points
+     */
+    protected function extractPoints1dLinear(string $wktCoords, array|null $scale_data): array
+    {
+        /** @var float[] $points_arr */
+        $points_arr = $this->extractPointsInternal($wktCoords, $scale_data, true);
+
+        return $points_arr;
+    }
+
+    /**
+     * @param string     $wktCoords  string of ),( separated points
+     * @param array|null $scale_data data related to scaling
+     *
+     * @return float[][][]  scaled points
+     */
+    protected function extractPoints2d(string $wktCoords, array|null $scale_data): array
+    {
+        $parts = explode('),(', $wktCoords);
+
+        return array_map(function ($coord) use ($scale_data) {
+            return $this->extractPoints1d($coord, $scale_data);
+        }, $parts);
+    }
+
+    /**
+     * @param string     $wktCoords  string of )),(( separated points
+     * @param array|null $scale_data data related to scaling
+     *
+     * @return float[][][][] scaled points
+     */
+    protected function extractPoints3d(string $wktCoords, array|null $scale_data): array
+    {
+        $parts = explode(')),((', $wktCoords);
+
+        return array_map(function ($coord) use ($scale_data) {
+            return $this->extractPoints2d($coord, $scale_data);
+        }, $parts);
+    }
+
+    /**
+     * @param string                                      $constructor
+     * OpenLayers geometry constructor string
+     * @param float[]|float[][]|float[][][]|float[][][][] $coordinates
+     * Array of coordintes 1-4 dimensions
+     */
+    protected function toOpenLayersObject(string $constructor, array $coordinates, int $srid): string
+    {
+        $ol = 'new ' . $constructor . '(' . json_encode($coordinates) . ')';
+        if ($srid != 3857) {
+            $ol .= '.transform(\'EPSG:' . ($srid ?: 4326) . '\', \'EPSG:3857\')';
         }
 
-        return $ol_array;
+        return $ol;
     }
 
-    /**
-     * Generates JavaScript for adding points for OpenLayers polygon.
-     *
-     * @param array $polygon x and y coordinates for each line
-     * @param int   $srid    spatial reference id
-     *
-     * @return string JavaScript for adding points for OpenLayers polygon
-     */
-    protected function getPolygonForOpenLayers(array $polygon, int $srid): string
+    protected function addGeometryToLayer(string $olGeometry, string $style): string
     {
-        return $this->getLineArrayForOpenLayers($polygon, $srid, false)
-        . 'var polygon = new ol.geom.Polygon(arr);';
-    }
-
-    /**
-     * Generates JavaScript for adding an array of LineString
-     * or LineRing to OpenLayers.
-     *
-     * @param array $lines          x and y coordinates for each line
-     * @param int   $srid           spatial reference id
-     * @param bool  $is_line_string whether it's an array of LineString
-     *
-     * @return string JavaScript for adding an array of LineString
-     *                or LineRing to OpenLayers
-     */
-    protected function getLineArrayForOpenLayers(
-        array $lines,
-        int $srid,
-        $is_line_string = true,
-    ): string {
-        $ol_array = 'var arr = [];';
-        foreach ($lines as $line) {
-            $ol_array .= 'var lineArr = [];';
-            $points_arr = $this->extractPoints($line, null);
-            $ol_array .= 'var line = ' . $this->getLineForOpenLayers($points_arr, $srid, $is_line_string) . ';';
-            $ol_array .= 'var coord = line.getCoordinates();';
-            $ol_array .= 'for (var i = 0; i < coord.length; i++) lineArr.push(coord[i]);';
-            $ol_array .= 'arr.push(lineArr);';
-        }
-
-        return $ol_array;
-    }
-
-    /**
-     * Generates JavaScript for adding a LineString or LineRing to OpenLayers.
-     *
-     * @param array $points_arr     x and y coordinates for each point
-     * @param int   $srid           spatial reference id
-     * @param bool  $is_line_string whether it's a LineString
-     *
-     * @return string JavaScript for adding a LineString or LineRing to OpenLayers
-     */
-    protected function getLineForOpenLayers(
-        array $points_arr,
-        int $srid,
-        $is_line_string = true,
-    ): string {
-        return 'new ol.geom.'
-        . ($is_line_string ? 'LineString' : 'LinearRing') . '('
-        . $this->getPointsArrayForOpenLayers($points_arr, $srid)
-        . ')';
-    }
-
-    /**
-     * Generates JavaScript for adding an array of points to OpenLayers.
-     *
-     * @param array $points_arr x and y coordinates for each point
-     * @param int   $srid       spatial reference id
-     *
-     * @return string JavaScript for adding an array of points to OpenLayers
-     */
-    protected function getPointsArrayForOpenLayers(array $points_arr, int $srid): string
-    {
-        $ol_array = 'new Array(';
-        foreach ($points_arr as $point) {
-            $ol_array .= $this->getPointForOpenLayers($point, $srid) . '.getCoordinates(), ';
-        }
-
-        $ol_array = mb_substr($ol_array, 0, -2);
-
-        return $ol_array . ')';
-    }
-
-    /**
-     * Generates JavaScript for adding a point to OpenLayers.
-     *
-     * @param array $point array containing the x and y coordinates of the point
-     * @param int   $srid  spatial reference id
-     *
-     * @return string JavaScript for adding points to OpenLayers
-     */
-    protected function getPointForOpenLayers(array $point, int $srid): string
-    {
-        return '(new ol.geom.Point([' . $point[0] . ',' . $point[1] . '])'
-        . '.transform(ol.proj.get("EPSG:' . $srid . '")'
-        . ', ol.proj.get(\'EPSG:3857\')))';
+        return 'var feature = new ol.Feature(' . $olGeometry . ');'
+            . 'feature.setStyle(' . $style . ');'
+            . 'vectorSource.addFeature(feature);';
     }
 
     protected function getRandomId(): int

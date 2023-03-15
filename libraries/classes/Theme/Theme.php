@@ -2,7 +2,11 @@
 
 declare(strict_types=1);
 
-namespace PhpMyAdmin;
+namespace PhpMyAdmin\Theme;
+
+use PhpMyAdmin\Version;
+use Webmozart\Assert\Assert;
+use Webmozart\Assert\InvalidArgumentException;
 
 use function __;
 use function file_exists;
@@ -20,7 +24,6 @@ use function trim;
 use function version_compare;
 
 use const DIRECTORY_SEPARATOR;
-
 use const E_USER_ERROR;
 
 /**
@@ -63,6 +66,12 @@ class Theme
      * @var int filesize for info file
      */
     public int $filesizeInfo = 0;
+
+    /** @var list<non-empty-string> */
+    private array $colorModes = ['light'];
+
+    /** @var non-empty-string */
+    private string $colorMode = 'light';
 
     /**
      * Loads theme information
@@ -109,6 +118,15 @@ class Theme
 
         if (! in_array(Version::SERIES, $data['supports'])) {
             return false;
+        }
+
+        try {
+            Assert::keyExists($data, 'colorModes');
+            Assert::isNonEmptyList($data['colorModes']);
+            Assert::allStringNotEmpty($data['colorModes']);
+            $this->colorModes = $data['colorModes'];
+            $this->colorMode = $this->colorModes[0];
+        } catch (InvalidArgumentException) {
         }
 
         $this->mtimeInfo = filemtime($infofile);
@@ -330,5 +348,26 @@ class Theme
         }
 
         return './themes/' . ThemeManager::FALLBACK_THEME . '/img/' . $file;
+    }
+
+    /** @return list<non-empty-string> */
+    public function getColorModes(): array
+    {
+        return $this->colorModes;
+    }
+
+    public function setColorMode(string $colorMode): void
+    {
+        if (! in_array($colorMode, $this->colorModes, true)) {
+            return;
+        }
+
+        $this->colorMode = $colorMode;
+    }
+
+    /** @return non-empty-string */
+    public function getColorMode(): string
+    {
+        return $this->colorMode;
     }
 }

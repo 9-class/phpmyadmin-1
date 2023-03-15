@@ -378,17 +378,11 @@ class ImportMediawiki extends ImportPlugin
      */
     private function executeImportTables(array &$tables, array $analyses, array &$sqlStatements): void
     {
-        // $db_name : The currently selected database name, if applicable
-        //            No backquotes
-        // $options : An associative array of options
-        [$db_name, $options] = $this->getDbnameAndOptions($GLOBALS['db'], 'mediawiki_DB');
-
-        // Array of SQL strings
-        // Non-applicable parameters
-        $create = null;
+        $db_name = $GLOBALS['db'] !== '' ? $GLOBALS['db'] : 'mediawiki_DB';
+        $createDb = $GLOBALS['db'] === '';
 
         // Create and execute necessary SQL statements from data
-        $this->import->buildSql($db_name, $tables, $analyses, $create, $options, $sqlStatements);
+        $this->import->buildSql($db_name, $tables, $analyses, createDb:$createDb, sqlData:$sqlStatements);
     }
 
     /**

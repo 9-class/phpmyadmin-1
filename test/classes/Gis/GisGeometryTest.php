@@ -137,38 +137,40 @@ class GisGeometryTest extends AbstractTestCase
     }
 
     /**
-     * tests extractPoints method
+     * tests extractPointsInternal method
      *
      * @param string     $point_set  String of comma separated points
      * @param array|null $scale_data Data related to scaling
      * @param bool       $linear     If true, as a 1D array, else as a 2D array
      * @param array      $output     Expected output
      *
-     * @dataProvider providerForTestExtractPoints
+     * @dataProvider providerForTestExtractPointsInternal
      */
-    public function testExtractPoints(string $point_set, array|null $scale_data, bool $linear, array $output): void
-    {
-        $this->assertEquals(
-            $output,
-            $this->callFunction(
-                $this->object,
-                GisGeometry::class,
-                'extractPoints',
-                [
-                    $point_set,
-                    $scale_data,
-                    $linear,
-                ],
-            ),
+    public function testExtractPointsInternal(
+        string $point_set,
+        array|null $scale_data,
+        bool $linear,
+        array $output,
+    ): void {
+        $points = $this->callFunction(
+            $this->object,
+            GisGeometry::class,
+            'extractPointsInternal',
+            [
+                $point_set,
+                $scale_data,
+                $linear,
+            ],
         );
+        $this->assertEquals($output, $points);
     }
 
     /**
-     * data provider for testExtractPoints
+     * data provider for testExtractPointsInternal
      *
-     * @return array data for testExtractPoints
+     * @return array data for testExtractPointsInternal
      */
-    public static function providerForTestExtractPoints(): array
+    public static function providerForTestExtractPointsInternal(): array
     {
         return [
             // with no scale data
@@ -249,106 +251,6 @@ class GisGeometryTest extends AbstractTestCase
                         0,
                     ],
                 ],
-            ],
-        ];
-    }
-
-    /**
-     * test case for getBoundsForOl() method
-     *
-     * @param int    $srid       spatial reference ID
-     * @param array  $scale_data data related to scaling
-     * @param string $output     expected output
-     *
-     * @dataProvider providerForTestGetBoundsForOl
-     */
-    public function testGetBoundsForOl(int $srid, array $scale_data, string $output): void
-    {
-        $this->assertEquals(
-            $output,
-            $this->callFunction(
-                $this->object,
-                GisGeometry::class,
-                'getBoundsForOl',
-                [
-                    $srid,
-                    $scale_data,
-                ],
-            ),
-        );
-    }
-
-    /**
-     * data provider for testGetBoundsForOl() test case
-     *
-     * @return array test data for the testGetBoundsForOl() test case
-     */
-    public static function providerForTestGetBoundsForOl(): array
-    {
-        return [
-            [
-                4326,
-                [
-                    'minX' => '0',
-                    'minY' => '0',
-                    'maxX' => '1',
-                    'maxY' => '1',
-                ],
-                'var minLoc = [0, 0];var maxLoc = [1, 1];'
-                . 'var ext = ol.extent.boundingExtent([min'
-                . 'Loc, maxLoc]);ext = ol.proj.transformEx'
-                . 'tent(ext, ol.proj.get("EPSG:4326"), ol.'
-                . 'proj.get(\'EPSG:3857\'));map.getView().'
-                . 'fit(ext, map.getSize());',
-            ],
-
-        ];
-    }
-
-    /**
-     * test case for getPolygonArrayForOpenLayers() method
-     *
-     * @param array  $polygons x and y coordinate pairs for each polygon
-     * @param int    $srid     spatial reference id
-     * @param string $output   expected output
-     *
-     * @dataProvider providerForTestGetPolygonArrayForOpenLayers
-     */
-    public function testGetPolygonArrayForOpenLayers(array $polygons, int $srid, string $output): void
-    {
-        $this->assertEquals(
-            $output,
-            $this->callFunction(
-                $this->object,
-                GisGeometry::class,
-                'getPolygonArrayForOpenLayers',
-                [
-                    $polygons,
-                    $srid,
-                ],
-            ),
-        );
-    }
-
-    /**
-     * data provider for testGetPolygonArrayForOpenLayers() test case
-     *
-     * @return array test data for testGetPolygonArrayForOpenLayers() test case
-     */
-    public static function providerForTestGetPolygonArrayForOpenLayers(): array
-    {
-        return [
-            [
-                ['Triangle'],
-                4326,
-                'var polygonArray = [];var arr = [];var lineArr = [];'
-                . 'var line = new ol.geom.LinearRing(new Array((new ol'
-                . '.geom.Point([0,0]).transform(ol.proj.get("EPSG:4326'
-                . '"), ol.proj.get(\'EPSG:3857\'))).getCoordinates()))'
-                . ';var coord = line.getCoordinates();for (var i = 0; i < coord.length; i++)'
-                . ' lineArr.push(coord[i]);arr.push(lineArr);var pol'
-                . 'ygon = new ol.geom.Polygon(arr);polygonArray.push(p'
-                . 'olygon);',
             ],
         ];
     }

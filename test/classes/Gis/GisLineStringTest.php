@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PhpMyAdmin\Tests\Gis;
 
-use PhpMyAdmin\Gis\GisGeometry;
 use PhpMyAdmin\Gis\GisLineString;
 use PhpMyAdmin\Gis\ScaleData;
 use PhpMyAdmin\Image\ImageWrapper;
@@ -17,34 +16,10 @@ use TCPDF;
  */
 class GisLineStringTest extends GisGeomTestCase
 {
-    protected GisGeometry $object;
-
-    /**
-     * Sets up the fixture, for example, opens a network connection.
-     * This method is called before a test is executed.
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->object = GisLineString::singleton();
-    }
-
-    /**
-     * Tears down the fixture, for example, closes a network connection.
-     * This method is called after a test is executed.
-     */
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-
-        unset($this->object);
-    }
-
     /**
      * data provider for testGenerateWkt
      *
-     * @return array data for testGenerateWkt
+     * @return array<array{array<mixed>, int, string|null, string}>
      */
     public static function providerForTestGenerateWkt(): array
     {
@@ -107,9 +82,39 @@ class GisLineStringTest extends GisGeomTestCase
     }
 
     /**
+     * Test for generateWkt
+     *
+     * @param array<mixed> $gis_data
+     * @param int          $index    index in $gis_data
+     * @param string|null  $empty    empty parameter
+     * @param string       $output   expected output
+     *
+     * @dataProvider providerForTestGenerateWkt
+     */
+    public function testGenerateWkt(array $gis_data, int $index, string|null $empty, string $output): void
+    {
+        $object = GisLineString::singleton();
+        $this->assertEquals($output, $object->generateWkt($gis_data, $index, $empty));
+    }
+
+    /**
+     * test generateParams method
+     *
+     * @param string       $wkt    point in WKT form
+     * @param array<mixed> $params expected output array
+     *
+     * @dataProvider providerForTestGenerateParams
+     */
+    public function testGenerateParams(string $wkt, array $params): void
+    {
+        $object = GisLineString::singleton();
+        $this->assertEquals($params, $object->generateParams($wkt));
+    }
+
+    /**
      * data provider for testGenerateParams
      *
-     * @return array data for testGenerateParams
+     * @return array<array{string, array<mixed>}>
      */
     public static function providerForTestGenerateParams(): array
     {
@@ -137,6 +142,20 @@ class GisLineStringTest extends GisGeomTestCase
     }
 
     /**
+     * test scaleRow method
+     *
+     * @param string    $spatial spatial data of a row
+     * @param ScaleData $min_max expected results
+     *
+     * @dataProvider providerForTestScaleRow
+     */
+    public function testScaleRow(string $spatial, ScaleData $min_max): void
+    {
+        $object = GisLineString::singleton();
+        $this->assertEquals($min_max, $object->scaleRow($spatial));
+    }
+
+    /**
      * data provider for testScaleRow
      *
      * @return array data for testScaleRow
@@ -154,9 +173,10 @@ class GisLineStringTest extends GisGeomTestCase
     /** @requires extension gd */
     public function testPrepareRowAsPng(): void
     {
+        $object = GisLineString::singleton();
         $image = ImageWrapper::create(200, 124, ['red' => 229, 'green' => 229, 'blue' => 229]);
         $this->assertNotNull($image);
-        $return = $this->object->prepareRowAsPng(
+        $return = $object->prepareRowAsPng(
             'LINESTRING(12 35,48 75,69 23,25 45,14 53,35 78)',
             'image',
             [176, 46, 224],
@@ -189,7 +209,8 @@ class GisLineStringTest extends GisGeomTestCase
         array $scale_data,
         TCPDF $pdf,
     ): void {
-        $return = $this->object->prepareRowAsPdf($spatial, $label, $color, $scale_data, $pdf);
+        $object = GisLineString::singleton();
+        $return = $object->prepareRowAsPdf($spatial, $label, $color, $scale_data, $pdf);
 
         $fileExpected = $this->testDir . '/linestring-expected.pdf';
         $fileActual = $this->testDir . '/linestring-actual.pdf';
@@ -234,7 +255,8 @@ class GisLineStringTest extends GisGeomTestCase
         array $scaleData,
         string $output,
     ): void {
-        $svg = $this->object->prepareRowAsSvg($spatial, $label, $color, $scaleData);
+        $object = GisLineString::singleton();
+        $svg = $object->prepareRowAsSvg($spatial, $label, $color, $scaleData);
         $this->assertEquals($output, $svg);
     }
 
@@ -266,12 +288,11 @@ class GisLineStringTest extends GisGeomTestCase
     /**
      * test case for prepareRowAsOl() method
      *
-     * @param string $spatial    GIS LINESTRING object
-     * @param int    $srid       spatial reference ID
-     * @param string $label      label for the GIS LINESTRING object
-     * @param int[]  $color      color for the GIS LINESTRING object
-     * @param array  $scale_data array containing data related to scaling
-     * @param string $output     expected output
+     * @param string $spatial GIS LINESTRING object
+     * @param int    $srid    spatial reference ID
+     * @param string $label   label for the GIS LINESTRING object
+     * @param int[]  $color   color for the GIS LINESTRING object
+     * @param string $output  expected output
      *
      * @dataProvider providerForPrepareRowAsOl
      */
@@ -280,10 +301,10 @@ class GisLineStringTest extends GisGeomTestCase
         int $srid,
         string $label,
         array $color,
-        array $scale_data,
         string $output,
     ): void {
-        $ol = $this->object->prepareRowAsOl($spatial, $srid, $label, $color, $scale_data);
+        $object = GisLineString::singleton();
+        $ol = $object->prepareRowAsOl($spatial, $srid, $label, $color);
         $this->assertEquals($output, $ol);
     }
 
@@ -300,27 +321,10 @@ class GisLineStringTest extends GisGeomTestCase
                 4326,
                 'Ol',
                 [176, 46, 224],
-                [
-                    'minX' => '0',
-                    'minY' => '0',
-                    'maxX' => '1',
-                    'maxY' => '1',
-                ],
-                'var style = new ol.style.Style({stroke: new ol.style.Stroke({"color":[176,46,224],'
-                . '"width":2}), text: new ol.style.Text({"text":"Ol"})});var minLoc = [0, 0];var ma'
-                . 'xLoc = [1, 1];var ext = ol.extent.boundingExtent([minLoc, maxLoc]);ext = ol.proj'
-                . '.transformExtent(ext, ol.proj.get("EPSG:4326"), ol.proj.get(\'EPSG:3857\'));map.'
-                . 'getView().fit(ext, map.getSize());var line = new ol.Feature({geometry: new ol.ge'
-                . 'om.LineString(new Array((new ol.geom.Point([12,35]).transform(ol.proj.get("EPSG:'
-                . '4326"), ol.proj.get(\'EPSG:3857\'))).getCoordinates(), (new ol.geom.Point([48,75'
-                . ']).transform(ol.proj.get("EPSG:4326"), ol.proj.get(\'EPSG:3857\'))).getCoordinat'
-                . 'es(), (new ol.geom.Point([69,23]).transform(ol.proj.get("EPSG:4326"), ol.proj.ge'
-                . 't(\'EPSG:3857\'))).getCoordinates(), (new ol.geom.Point([25,45]).transform(ol.pr'
-                . 'oj.get("EPSG:4326"), ol.proj.get(\'EPSG:3857\'))).getCoordinates(), (new ol.geom'
-                . '.Point([14,53]).transform(ol.proj.get("EPSG:4326"), ol.proj.get(\'EPSG:3857\')))'
-                . '.getCoordinates(), (new ol.geom.Point([35,78]).transform(ol.proj.get("EPSG:4326"'
-                . '), ol.proj.get(\'EPSG:3857\'))).getCoordinates()))});line.setStyle(style);vector'
-                . 'Layer.addFeature(line);',
+                'var feature = new ol.Feature(new ol.geom.LineString([[12,35],[48,75],[69,23],[25,4'
+                . '5],[14,53],[35,78]]).transform(\'EPSG:4326\', \'EPSG:3857\'));feature.setStyle(n'
+                . 'ew ol.style.Style({stroke: new ol.style.Stroke({"color":[176,46,224],"width":2})'
+                . ', text: new ol.style.Text({"text":"Ol"})}));vectorSource.addFeature(feature);',
             ],
         ];
     }

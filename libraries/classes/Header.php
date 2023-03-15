@@ -10,6 +10,7 @@ namespace PhpMyAdmin;
 use PhpMyAdmin\ConfigStorage\Relation;
 use PhpMyAdmin\Html\Generator;
 use PhpMyAdmin\Navigation\Navigation;
+use PhpMyAdmin\Theme\Theme;
 
 use function array_merge;
 use function defined;
@@ -282,6 +283,7 @@ class Header
 
         $baseDir = defined('PMA_PATH_TO_BASEDIR') ? PMA_PATH_TO_BASEDIR : '';
         $themePath = $GLOBALS['theme'] instanceof Theme ? $GLOBALS['theme']->getPath() : '';
+        $themeColorMode = $GLOBALS['theme'] instanceof Theme ? $GLOBALS['theme']->getColorMode() : 'light';
         $version = self::getVersionParameter();
 
         // The user preferences have been merged at this point
@@ -368,6 +370,7 @@ class Header
             'console' => $console,
             'messages' => $messages,
             'recent_table' => $recentTable,
+            'theme_color_mode' => $themeColorMode,
         ]);
     }
 

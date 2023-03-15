@@ -80,13 +80,13 @@ class GisPoint extends GisGeometry
 
         // Trim to remove leading 'POINT(' and trailing ')'
         $point = mb_substr($spatial, 6, -1);
-        $points_arr = $this->extractPoints($point, $scale_data);
+        $points_arr = $this->extractPoints1dLinear($point, $scale_data);
 
         // draw a small circle to mark the point
-        if ($points_arr[0][0] != '' && $points_arr[0][1] != '') {
+        if ($points_arr[0] != '' && $points_arr[0] != '') {
             $image->arc(
-                (int) round($points_arr[0][0]),
-                (int) round($points_arr[0][1]),
+                (int) round($points_arr[0]),
+                (int) round($points_arr[1]),
                 7,
                 7,
                 0,
@@ -97,8 +97,8 @@ class GisPoint extends GisGeometry
             if ($label !== '') {
                 $image->string(
                     1,
-                    (int) round($points_arr[0][0]),
-                    (int) round($points_arr[0][1]),
+                    (int) round($points_arr[0]),
+                    (int) round($points_arr[1]),
                     $label,
                     $black,
                 );
@@ -133,14 +133,14 @@ class GisPoint extends GisGeometry
 
         // Trim to remove leading 'POINT(' and trailing ')'
         $point = mb_substr($spatial, 6, -1);
-        $points_arr = $this->extractPoints($point, $scale_data);
+        $points_arr = $this->extractPoints1dLinear($point, $scale_data);
 
         // draw a small circle to mark the point
-        if ($points_arr[0][0] != '' && $points_arr[0][1] != '') {
-            $pdf->Circle($points_arr[0][0], $points_arr[0][1], 2, 0, 360, 'D', $line);
+        if ($points_arr[0] != '' && $points_arr[1] != '') {
+            $pdf->Circle($points_arr[0], $points_arr[1], 2, 0, 360, 'D', $line);
             // print label if applicable
             if ($label !== '') {
-                $pdf->setXY($points_arr[0][0], $points_arr[0][1]);
+                $pdf->setXY($points_arr[0], $points_arr[1]);
                 $pdf->setFontSize(5);
                 $pdf->Cell(0, 0, $label);
             }
@@ -172,12 +172,12 @@ class GisPoint extends GisGeometry
 
         // Trim to remove leading 'POINT(' and trailing ')'
         $point = mb_substr($spatial, 6, -1);
-        $points_arr = $this->extractPoints($point, $scale_data);
+        $points_arr = $this->extractPoints1dLinear($point, $scale_data);
 
         $row = '';
-        if (((float) $points_arr[0][0]) !== 0.0 && ((float) $points_arr[0][1]) !== 0.0) {
-            $row .= '<circle cx="' . $points_arr[0][0]
-                . '" cy="' . $points_arr[0][1] . '" r="3"';
+        if ($points_arr[0] !== 0.0 && $points_arr[1] !== 0.0) {
+            $row .= '<circle cx="' . $points_arr[0]
+                . '" cy="' . $points_arr[1] . '" r="3"';
             foreach ($point_options as $option => $val) {
                 $row .= ' ' . $option . '="' . $val . '"';
             }
@@ -192,64 +192,49 @@ class GisPoint extends GisGeometry
      * Prepares JavaScript related to a row in the GIS dataset
      * to visualize it with OpenLayers.
      *
-     * @param string $spatial    GIS POINT object
-     * @param int    $srid       Spatial reference ID
-     * @param string $label      Label for the GIS POINT object
-     * @param int[]  $color      Color for the GIS POINT object
-     * @param array  $scale_data Array containing data related to scaling
+     * @param string $spatial GIS POINT object
+     * @param int    $srid    Spatial reference ID
+     * @param string $label   Label for the GIS POINT object
+     * @param int[]  $color   Color for the GIS POINT object
      *
      * @return string JavaScript related to a row in the GIS dataset
      */
     public function prepareRowAsOl(
-        $spatial,
+        string $spatial,
         int $srid,
         string $label,
         array $color,
-        array $scale_data,
     ): string {
         $fill_style = ['color' => 'white'];
         $stroke_style = [
             'color' => $color,
             'width' => 2,
         ];
-        $result = 'var fill = new ol.style.Fill(' . json_encode($fill_style) . ');'
-            . 'var stroke = new ol.style.Stroke(' . json_encode($stroke_style) . ');'
-            . 'var style = new ol.style.Style({'
+        $style = 'new ol.style.Style({'
             . 'image: new ol.style.Circle({'
-            . 'fill: fill,'
-            . 'stroke: stroke,'
+            . 'fill: new ol.style.Fill(' . json_encode($fill_style) . '),'
+            . 'stroke: new ol.style.Stroke(' . json_encode($stroke_style) . '),'
             . 'radius: 3'
-            . '}),'
-            . 'fill: fill,'
-            . 'stroke: stroke';
+            . '})';
         if ($label !== '') {
             $text_style = [
                 'text' => $label,
                 'offsetY' => -9,
             ];
-            $result .= ',text: new ol.style.Text(' . json_encode($text_style) . ')';
+            $style .= ',text: new ol.style.Text(' . json_encode($text_style) . ')';
         }
 
-        $result .= '});';
-
-        if ($srid === 0) {
-            $srid = 4326;
-        }
-
-        $result .= $this->getBoundsForOl($srid, $scale_data);
+        $style .= '})';
 
         // Trim to remove leading 'POINT(' and trailing ')'
         $point = mb_substr($spatial, 6, -1);
-        $points_arr = $this->extractPoints($point, null);
+        $olGeometry = $this->toOpenLayersObject(
+            'ol.geom.Point',
+            $this->extractPoints1dLinear($point, null),
+            $srid,
+        );
 
-        if ($points_arr[0][0] != '' && $points_arr[0][1] != '') {
-            $result .= 'var point = new ol.Feature({geometry: '
-                . $this->getPointForOpenLayers($points_arr[0], $srid) . '});'
-                . 'point.setStyle(style);'
-                . 'vectorLayer.addFeature(point);';
-        }
-
-        return $result;
+        return $this->addGeometryToLayer($olGeometry, $style);
     }
 
     /**
@@ -297,7 +282,7 @@ class GisPoint extends GisGeometry
     {
         // Trim to remove leading 'POINT(' and trailing ')'
         $wkt_point = mb_substr($wkt, 6, -1);
-        $points = $this->extractPoints($wkt_point, null);
+        $points = $this->extractPoints1d($wkt_point, null);
 
         return [
             'x' => $points[0][0],

@@ -931,7 +931,7 @@ parameters:
 			path: libraries/classes/ConfigStorage/Relation.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\ConfigStorage\\\\Relation\\:\\:getForeignData\\(\\) should return array\\{foreign_link\\: bool, the_total\\: mixed, foreign_display\\: string, disp_row\\: array\\<int, non\\-empty\\-array\\>\\|null, foreign_field\\: mixed\\} but returns array\\{foreign_link\\: bool, the_total\\: mixed, foreign_display\\: string, disp_row\\: array\\<int, array\\<string, string\\|null\\>\\>\\|null, foreign_field\\: mixed\\}\\.$#"
+			message: "#^Method PhpMyAdmin\\\\ConfigStorage\\\\Relation\\:\\:getForeignData\\(\\) should return array\\{foreign_link\\: bool, the_total\\: mixed, foreign_display\\: string, disp_row\\: array\\<int, non\\-empty\\-array\\>\\|null, foreign_field\\: mixed\\} but returns array\\{foreign_link\\: bool, the_total\\: int\\|string\\|null, foreign_display\\: string, disp_row\\: array\\<int, array\\<string, string\\|null\\>\\>\\|null, foreign_field\\: mixed\\}\\.$#"
 			count: 1
 			path: libraries/classes/ConfigStorage/Relation.php
 
@@ -1361,7 +1361,7 @@ parameters:
 			path: libraries/classes/Controllers/Database/Structure/CopyTableController.php
 
 		-
-			message: "#^Parameter \\#3 \\$targetDb of static method PhpMyAdmin\\\\Table\\:\\:moveCopy\\(\\) expects string\\|null, mixed given\\.$#"
+			message: "#^Parameter \\#3 \\$targetDb of static method PhpMyAdmin\\\\Table\\:\\:moveCopy\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: libraries/classes/Controllers/Database/Structure/CopyTableController.php
 
@@ -4201,12 +4201,32 @@ parameters:
 			path: libraries/classes/Footer.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:extractPoints\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
+			message: "#^Casting to float something that's already float\\.$#"
+			count: 2
+			path: libraries/classes/Gis/GisGeometry.php
+
+		-
+			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:extractPoints1d\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/Gis/GisGeometry.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:extractPoints\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:extractPoints1dLinear\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: libraries/classes/Gis/GisGeometry.php
+
+		-
+			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:extractPoints2d\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: libraries/classes/Gis/GisGeometry.php
+
+		-
+			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:extractPoints3d\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: libraries/classes/Gis/GisGeometry.php
+
+		-
+			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:extractPointsInternal\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/Gis/GisGeometry.php
 
@@ -4221,47 +4241,7 @@ parameters:
 			path: libraries/classes/Gis/GisGeometry.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:getBoundsForOl\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisGeometry.php
-
-		-
 			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:getCoordinateParams\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisGeometry.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:getLineArrayForOpenLayers\\(\\) has parameter \\$lines with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisGeometry.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:getLineForOpenLayers\\(\\) has parameter \\$points_arr with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisGeometry.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:getPointForOpenLayers\\(\\) has parameter \\$point with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisGeometry.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:getPointsArrayForOpenLayers\\(\\) has parameter \\$points_arr with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisGeometry.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:getPolygonArrayForOpenLayers\\(\\) has parameter \\$polygons with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisGeometry.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:getPolygonForOpenLayers\\(\\) has parameter \\$polygon with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisGeometry.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:prepareRowAsOl\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/Gis/GisGeometry.php
 
@@ -4306,11 +4286,6 @@ parameters:
 			path: libraries/classes/Gis/GisGeometryCollection.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisGeometryCollection\\:\\:prepareRowAsOl\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisGeometryCollection.php
-
-		-
 			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisGeometryCollection\\:\\:prepareRowAsPdf\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/Gis/GisGeometryCollection.php
@@ -4332,11 +4307,6 @@ parameters:
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisLineString\\:\\:getCoordinateParams\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisLineString.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisLineString\\:\\:prepareRowAsOl\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/Gis/GisLineString.php
 
@@ -4366,7 +4336,7 @@ parameters:
 			path: libraries/classes/Gis/GisLineString.php
 
 		-
-			message: "#^Cannot access offset int\\<0, max\\> on non\\-empty\\-array\\<'no_of_points'\\|int\\<0, max\\>, array\\{x\\: mixed, y\\: mixed\\}\\|int\\<0, max\\>\\>\\|int\\<1, max\\>\\.$#"
+			message: "#^Cannot access offset int\\<0, max\\> on non\\-empty\\-array\\<'no_of_points'\\|int\\<0, max\\>, array\\{x\\: float, y\\: float\\}\\|int\\<0, max\\>\\>\\|int\\<1, max\\>\\.$#"
 			count: 1
 			path: libraries/classes/Gis/GisMultiLineString.php
 
@@ -4382,11 +4352,6 @@ parameters:
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisMultiLineString\\:\\:getShape\\(\\) has parameter \\$row_data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisMultiLineString.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisMultiLineString\\:\\:prepareRowAsOl\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/Gis/GisMultiLineString.php
 
@@ -4426,17 +4391,7 @@ parameters:
 			path: libraries/classes/Gis/GisMultiPoint.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisMultiPoint\\:\\:getPointsArrayForOpenLayers\\(\\) has parameter \\$points_arr with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisMultiPoint.php
-
-		-
 			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisMultiPoint\\:\\:getShape\\(\\) has parameter \\$row_data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisMultiPoint.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisMultiPoint\\:\\:prepareRowAsOl\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/Gis/GisMultiPoint.php
 
@@ -4466,12 +4421,12 @@ parameters:
 			path: libraries/classes/Gis/GisMultiPoint.php
 
 		-
-			message: "#^Cannot access offset int on non\\-empty\\-array\\<'no_of_lines'\\|int, array\\{no_of_points\\: int\\<0, max\\>, 0\\?\\: array\\{x\\: mixed, y\\: mixed\\}\\}\\|int\\<1, max\\>\\>\\|int\\<1, max\\>\\.$#"
+			message: "#^Cannot access offset int on non\\-empty\\-array\\<'no_of_lines'\\|int, array\\{no_of_points\\: int\\<0, max\\>, 0\\?\\: array\\{x\\: float, y\\: float\\}\\}\\|int\\<1, max\\>\\>\\|int\\<1, max\\>\\.$#"
 			count: 1
 			path: libraries/classes/Gis/GisMultiPolygon.php
 
 		-
-			message: "#^Cannot access offset int\\<0, max\\> on non\\-empty\\-array\\<'no_of_points'\\|int\\<0, max\\>, array\\{x\\: mixed, y\\: mixed\\}\\|int\\<0, max\\>\\>\\|int\\<1, max\\>\\.$#"
+			message: "#^Cannot access offset int\\<0, max\\> on non\\-empty\\-array\\<'no_of_points'\\|int\\<0, max\\>, array\\{x\\: float, y\\: float\\}\\|int\\<0, max\\>\\>\\|int\\<1, max\\>\\.$#"
 			count: 1
 			path: libraries/classes/Gis/GisMultiPolygon.php
 
@@ -4496,11 +4451,6 @@ parameters:
 			path: libraries/classes/Gis/GisMultiPolygon.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisMultiPolygon\\:\\:prepareRowAsOl\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisMultiPolygon.php
-
-		-
 			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisMultiPolygon\\:\\:prepareRowAsPdf\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/Gis/GisMultiPolygon.php
@@ -4512,6 +4462,11 @@ parameters:
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisMultiPolygon\\:\\:prepareRowAsSvg\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: libraries/classes/Gis/GisMultiPolygon.php
+
+		-
+			message: "#^Parameter \\#1 \\$points of method PhpMyAdmin\\\\Image\\\\ImageWrapper\\:\\:filledPolygon\\(\\) expects array\\<int, int\\>, array\\<float\\> given\\.$#"
 			count: 1
 			path: libraries/classes/Gis/GisMultiPolygon.php
 
@@ -4546,11 +4501,6 @@ parameters:
 			path: libraries/classes/Gis/GisPoint.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisPoint\\:\\:prepareRowAsOl\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisPoint.php
-
-		-
 			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisPoint\\:\\:prepareRowAsPdf\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/Gis/GisPoint.php
@@ -4576,7 +4526,7 @@ parameters:
 			path: libraries/classes/Gis/GisPoint.php
 
 		-
-			message: "#^Cannot access offset int\\<0, max\\> on non\\-empty\\-array\\<'no_of_points'\\|int\\<0, max\\>, array\\{x\\: mixed, y\\: mixed\\}\\|int\\<0, max\\>\\>\\|int\\<1, max\\>\\.$#"
+			message: "#^Cannot access offset int\\<0, max\\> on non\\-empty\\-array\\<'no_of_points'\\|int\\<0, max\\>, array\\{x\\: float, y\\: float\\}\\|int\\<0, max\\>\\>\\|int\\<1, max\\>\\.$#"
 			count: 1
 			path: libraries/classes/Gis/GisPolygon.php
 
@@ -4626,11 +4576,6 @@ parameters:
 			path: libraries/classes/Gis/GisPolygon.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisPolygon\\:\\:prepareRowAsOl\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisPolygon.php
-
-		-
 			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisPolygon\\:\\:prepareRowAsPdf\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/Gis/GisPolygon.php
@@ -4642,6 +4587,11 @@ parameters:
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisPolygon\\:\\:prepareRowAsSvg\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: libraries/classes/Gis/GisPolygon.php
+
+		-
+			message: "#^Parameter \\#1 \\$points of method PhpMyAdmin\\\\Image\\\\ImageWrapper\\:\\:filledPolygon\\(\\) expects array\\<int, int\\>, array\\<float\\> given\\.$#"
 			count: 1
 			path: libraries/classes/Gis/GisPolygon.php
 
@@ -5486,16 +5436,6 @@ parameters:
 			path: libraries/classes/Linter.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\ListAbstract\\:\\:getDefault\\(\\) should return string but returns mixed\\.$#"
-			count: 1
-			path: libraries/classes/ListAbstract.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\ListDatabase\\:\\:getDefault\\(\\) should return string but returns mixed\\.$#"
-			count: 1
-			path: libraries/classes/ListDatabase.php
-
-		-
 			message: "#^Method PhpMyAdmin\\\\ListDatabase\\:\\:retrieve\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/ListDatabase.php
@@ -5791,6 +5731,11 @@ parameters:
 			path: libraries/classes/Navigation/Nodes/NodeTable.php
 
 		-
+			message: "#^Casting to string something that's already string\\.$#"
+			count: 1
+			path: libraries/classes/Normalization.php
+
+		-
 			message: "#^Method PhpMyAdmin\\\\Normalization\\:\\:createNewTablesFor2NF\\(\\) has parameter \\$partialDependencies with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/Normalization.php
@@ -5816,22 +5761,7 @@ parameters:
 			path: libraries/classes/Normalization.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Normalization\\:\\:findDistinctValuesCount\\(\\) has parameter \\$columns with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Normalization.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Normalization\\:\\:findDistinctValuesCount\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Normalization.php
-
-		-
 			message: "#^Method PhpMyAdmin\\\\Normalization\\:\\:getAllCombinationPartialKeys\\(\\) has parameter \\$primaryKey with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Normalization.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Normalization\\:\\:getAllCombinationPartialKeys\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/Normalization.php
 
@@ -6809,16 +6739,6 @@ parameters:
 			message: "#^Method PhpMyAdmin\\\\Plugins\\\\Import\\\\Upload\\\\UploadSession\\:\\:getUploadStatus\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/Plugins/Import/Upload/UploadSession.php
-
-		-
-			message: "#^Casting to string something that's already string\\.$#"
-			count: 1
-			path: libraries/classes/Plugins/ImportPlugin.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Plugins\\\\ImportPlugin\\:\\:getDbnameAndOptions\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Plugins/ImportPlugin.php
 
 		-
 			message: "#^Parameter \\#2 \\$masterField of method PhpMyAdmin\\\\Plugins\\\\Schema\\\\Dia\\\\DiaRelationSchema\\:\\:addRelation\\(\\) expects string, \\(int\\|string\\) given\\.$#"
@@ -8261,7 +8181,7 @@ parameters:
 			path: libraries/classes/Sql.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Sql\\:\\:countQueryResults\\(\\) should return int\\|numeric\\-string but returns mixed\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Sql\\:\\:countQueryResults\\(\\) should return int\\|numeric\\-string but returns float\\|int\\|numeric\\-string\\.$#"
 			count: 1
 			path: libraries/classes/Sql.php
 
@@ -8363,11 +8283,6 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$dtResult of method PhpMyAdmin\\\\Display\\\\Results\\:\\:getTable\\(\\) expects PhpMyAdmin\\\\Dbal\\\\ResultInterface, PhpMyAdmin\\\\Dbal\\\\ResultInterface\\|null given\\.$#"
 			count: 1
-			path: libraries/classes/Sql.php
-
-		-
-			message: "#^Parameter \\#1 \\$numberOfLine of method PhpMyAdmin\\\\Sql\\:\\:getStartPosToDisplayRow\\(\\) expects int, mixed given\\.$#"
-			count: 2
 			path: libraries/classes/Sql.php
 
 		-
@@ -8487,7 +8402,7 @@ parameters:
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
+			count: 3
 			path: libraries/classes/Table.php
 
 		-
@@ -8567,11 +8482,6 @@ parameters:
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Table\\:\\:getNameAndTypeOfTheColumns\\(\\) should return array\\<string, string\\> but returns array\\<int\\|string, mixed\\>\\.$#"
-			count: 1
-			path: libraries/classes/Table.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Table\\:\\:getRowFormat\\(\\) should return string but returns mixed\\.$#"
 			count: 1
 			path: libraries/classes/Table.php
 
@@ -8756,44 +8666,44 @@ parameters:
 			path: libraries/classes/Template.php
 
 		-
-			message: "#^Property PhpMyAdmin\\\\Theme\\:\\:\\$filesizeInfo \\(int\\) does not accept int\\<0, max\\>\\|false\\.$#"
+			message: "#^Property PhpMyAdmin\\\\Theme\\\\Theme\\:\\:\\$filesizeInfo \\(int\\) does not accept int\\<0, max\\>\\|false\\.$#"
 			count: 1
-			path: libraries/classes/Theme.php
+			path: libraries/classes/Theme/Theme.php
 
 		-
-			message: "#^Property PhpMyAdmin\\\\Theme\\:\\:\\$mtimeInfo \\(int\\) does not accept int\\|false\\.$#"
+			message: "#^Property PhpMyAdmin\\\\Theme\\\\Theme\\:\\:\\$mtimeInfo \\(int\\) does not accept int\\|false\\.$#"
 			count: 1
-			path: libraries/classes/Theme.php
+			path: libraries/classes/Theme/Theme.php
 
 		-
 			message: "#^Unreachable statement \\- code above always terminates\\.$#"
 			count: 1
-			path: libraries/classes/Theme.php
+			path: libraries/classes/Theme/Theme.php
 
 		-
 			message: "#^Casting to bool something that's already bool\\.$#"
 			count: 1
-			path: libraries/classes/ThemeManager.php
+			path: libraries/classes/Theme/ThemeManager.php
 
 		-
 			message: "#^If condition is always true\\.$#"
 			count: 1
-			path: libraries/classes/ThemeManager.php
+			path: libraries/classes/Theme/ThemeManager.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\ThemeManager\\:\\:getThemesArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Theme\\\\ThemeManager\\:\\:getThemesArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/ThemeManager.php
+			path: libraries/classes/Theme/ThemeManager.php
 
 		-
-			message: "#^Property PhpMyAdmin\\\\ThemeManager\\:\\:\\$activeTheme \\(string\\) does not accept string\\|null\\.$#"
+			message: "#^Property PhpMyAdmin\\\\Theme\\\\ThemeManager\\:\\:\\$activeTheme \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
-			path: libraries/classes/ThemeManager.php
+			path: libraries/classes/Theme/ThemeManager.php
 
 		-
 			message: "#^Unreachable statement \\- code above always terminates\\.$#"
 			count: 2
-			path: libraries/classes/ThemeManager.php
+			path: libraries/classes/Theme/ThemeManager.php
 
 		-
 			message: "#^Cannot access property \\$dest on PhpMyAdmin\\\\SqlParser\\\\Components\\\\IntoKeyword\\|null\\.$#"
@@ -9606,16 +9516,6 @@ parameters:
 			path: test/classes/Config/ServerConfigChecksTest.php
 
 		-
-			message: "#^Variable property access on PhpMyAdmin\\\\Config\\\\Settings\\\\Export\\.$#"
-			count: 1
-			path: test/classes/Config/Settings/ExportTest.php
-
-		-
-			message: "#^Variable property access on PhpMyAdmin\\\\Config\\\\Settings\\\\Import\\.$#"
-			count: 1
-			path: test/classes/Config/Settings/ImportTest.php
-
-		-
 			message: "#^Variable property access on PhpMyAdmin\\\\Config\\\\Settings\\\\Schema\\.$#"
 			count: 1
 			path: test/classes/Config/Settings/SchemaTest.php
@@ -10211,16 +10111,6 @@ parameters:
 			path: test/classes/Gis/GisFactoryTest.php
 
 		-
-			message: "#^Class PhpMyAdmin\\\\Tests\\\\Gis\\\\GisGeomTestCase has an uninitialized property \\$object\\. Give it default value or assign it in the constructor\\.$#"
-			count: 1
-			path: test/classes/Gis/GisGeomTestCase.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisGeomTestCase\\:\\:testGenerateParams\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisGeomTestCase.php
-
-		-
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisGeometryCollectionTest\\:\\:providerForPrepareRowAsOl\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: test/classes/Gis/GisGeometryCollectionTest.php
@@ -10236,27 +10126,7 @@ parameters:
 			path: test/classes/Gis/GisGeometryCollectionTest.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisGeometryCollectionTest\\:\\:providerForTestGenerateParams\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisGeometryCollectionTest.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisGeometryCollectionTest\\:\\:providerForTestGenerateWkt\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisGeometryCollectionTest.php
-
-		-
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisGeometryCollectionTest\\:\\:providerForTestScaleRow\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisGeometryCollectionTest.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisGeometryCollectionTest\\:\\:testGenerateWkt\\(\\) has parameter \\$gis_data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisGeometryCollectionTest.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisGeometryCollectionTest\\:\\:testPrepareRowAsOl\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: test/classes/Gis/GisGeometryCollectionTest.php
 
@@ -10271,17 +10141,7 @@ parameters:
 			path: test/classes/Gis/GisGeometryCollectionTest.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisGeometryTest\\:\\:providerForTestExtractPoints\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisGeometryTest.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisGeometryTest\\:\\:providerForTestGetBoundsForOl\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisGeometryTest.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisGeometryTest\\:\\:providerForTestGetPolygonArrayForOpenLayers\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisGeometryTest\\:\\:providerForTestExtractPointsInternal\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: test/classes/Gis/GisGeometryTest.php
 
@@ -10296,22 +10156,12 @@ parameters:
 			path: test/classes/Gis/GisGeometryTest.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisGeometryTest\\:\\:testExtractPoints\\(\\) has parameter \\$output with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisGeometryTest\\:\\:testExtractPointsInternal\\(\\) has parameter \\$output with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: test/classes/Gis/GisGeometryTest.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisGeometryTest\\:\\:testExtractPoints\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisGeometryTest.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisGeometryTest\\:\\:testGetBoundsForOl\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisGeometryTest.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisGeometryTest\\:\\:testGetPolygonArrayForOpenLayers\\(\\) has parameter \\$polygons with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisGeometryTest\\:\\:testExtractPointsInternal\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: test/classes/Gis/GisGeometryTest.php
 
@@ -10336,22 +10186,7 @@ parameters:
 			path: test/classes/Gis/GisLineStringTest.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisLineStringTest\\:\\:providerForTestGenerateParams\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisLineStringTest.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisLineStringTest\\:\\:providerForTestGenerateWkt\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisLineStringTest.php
-
-		-
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisLineStringTest\\:\\:providerForTestScaleRow\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisLineStringTest.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisLineStringTest\\:\\:testPrepareRowAsOl\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: test/classes/Gis/GisLineStringTest.php
 
@@ -10364,11 +10199,6 @@ parameters:
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisLineStringTest\\:\\:testPrepareRowAsSvg\\(\\) has parameter \\$scaleData with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: test/classes/Gis/GisLineStringTest.php
-
-		-
-			message: "#^Call to an undefined method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:getShape\\(\\)\\.$#"
-			count: 1
-			path: test/classes/Gis/GisMultiLineStringTest.php
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisMultiLineStringTest\\:\\:providerForPrepareRowAsOl\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -10386,22 +10216,7 @@ parameters:
 			path: test/classes/Gis/GisMultiLineStringTest.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisMultiLineStringTest\\:\\:providerForTestGenerateParams\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisMultiLineStringTest.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisMultiLineStringTest\\:\\:providerForTestGenerateWkt\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisMultiLineStringTest.php
-
-		-
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisMultiLineStringTest\\:\\:providerForTestScaleRow\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisMultiLineStringTest.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisMultiLineStringTest\\:\\:testPrepareRowAsOl\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: test/classes/Gis/GisMultiLineStringTest.php
 
@@ -10414,11 +10229,6 @@ parameters:
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisMultiLineStringTest\\:\\:testPrepareRowAsSvg\\(\\) has parameter \\$scaleData with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: test/classes/Gis/GisMultiLineStringTest.php
-
-		-
-			message: "#^Call to an undefined method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:getShape\\(\\)\\.$#"
-			count: 1
-			path: test/classes/Gis/GisMultiPointTest.php
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisMultiPointTest\\:\\:providerForPrepareRowAsOl\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -10436,22 +10246,7 @@ parameters:
 			path: test/classes/Gis/GisMultiPointTest.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisMultiPointTest\\:\\:providerForTestGenerateParams\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisMultiPointTest.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisMultiPointTest\\:\\:providerForTestGenerateWkt\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisMultiPointTest.php
-
-		-
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisMultiPointTest\\:\\:providerForTestScaleRow\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisMultiPointTest.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisMultiPointTest\\:\\:testPrepareRowAsOl\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: test/classes/Gis/GisMultiPointTest.php
 
@@ -10464,11 +10259,6 @@ parameters:
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisMultiPointTest\\:\\:testPrepareRowAsSvg\\(\\) has parameter \\$scaleData with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: test/classes/Gis/GisMultiPointTest.php
-
-		-
-			message: "#^Call to an undefined method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:getShape\\(\\)\\.$#"
-			count: 1
-			path: test/classes/Gis/GisMultiPolygonTest.php
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisMultiPolygonTest\\:\\:getData\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -10491,16 +10281,6 @@ parameters:
 			path: test/classes/Gis/GisMultiPolygonTest.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisMultiPolygonTest\\:\\:providerForTestGenerateParams\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisMultiPolygonTest.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisMultiPolygonTest\\:\\:providerForTestGenerateWkt\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisMultiPolygonTest.php
-
-		-
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisMultiPolygonTest\\:\\:providerForTestGetShape\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: test/classes/Gis/GisMultiPolygonTest.php
@@ -10516,11 +10296,6 @@ parameters:
 			path: test/classes/Gis/GisMultiPolygonTest.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisMultiPolygonTest\\:\\:testPrepareRowAsOl\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisMultiPolygonTest.php
-
-		-
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisMultiPolygonTest\\:\\:testPrepareRowAsPdf\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: test/classes/Gis/GisMultiPolygonTest.php
@@ -10529,11 +10304,6 @@ parameters:
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisMultiPolygonTest\\:\\:testPrepareRowAsSvg\\(\\) has parameter \\$scaleData with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: test/classes/Gis/GisMultiPolygonTest.php
-
-		-
-			message: "#^Call to an undefined method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:getShape\\(\\)\\.$#"
-			count: 1
-			path: test/classes/Gis/GisPointTest.php
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisPointTest\\:\\:providerForPrepareRowAsOl\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -10547,16 +10317,6 @@ parameters:
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisPointTest\\:\\:providerForPrepareRowAsSvg\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisPointTest.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisPointTest\\:\\:providerForTestGenerateParams\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisPointTest.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisPointTest\\:\\:providerForTestGenerateWkt\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: test/classes/Gis/GisPointTest.php
 
@@ -10576,11 +10336,6 @@ parameters:
 			path: test/classes/Gis/GisPointTest.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisPointTest\\:\\:testPrepareRowAsOl\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisPointTest.php
-
-		-
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisPointTest\\:\\:testPrepareRowAsPdf\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: test/classes/Gis/GisPointTest.php
@@ -10589,26 +10344,6 @@ parameters:
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisPointTest\\:\\:testPrepareRowAsSvg\\(\\) has parameter \\$scaleData with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: test/classes/Gis/GisPointTest.php
-
-		-
-			message: "#^Call to an undefined method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:area\\(\\)\\.$#"
-			count: 1
-			path: test/classes/Gis/GisPolygonTest.php
-
-		-
-			message: "#^Call to an undefined method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:getPointOnSurface\\(\\)\\.$#"
-			count: 1
-			path: test/classes/Gis/GisPolygonTest.php
-
-		-
-			message: "#^Call to an undefined method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:isOuterRing\\(\\)\\.$#"
-			count: 1
-			path: test/classes/Gis/GisPolygonTest.php
-
-		-
-			message: "#^Call to an undefined method PhpMyAdmin\\\\Gis\\\\GisGeometry\\:\\:isPointInsidePolygon\\(\\)\\.$#"
-			count: 2
-			path: test/classes/Gis/GisPolygonTest.php
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisPolygonTest\\:\\:getData\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -10637,16 +10372,6 @@ parameters:
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisPolygonTest\\:\\:providerForTestArea\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisPolygonTest.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisPolygonTest\\:\\:providerForTestGenerateParams\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisPolygonTest.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisPolygonTest\\:\\:providerForTestGenerateWkt\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: test/classes/Gis/GisPolygonTest.php
 
@@ -10687,11 +10412,6 @@ parameters:
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisPolygonTest\\:\\:testIsPointInsidePolygon\\(\\) has parameter \\$polygon with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: test/classes/Gis/GisPolygonTest.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\Gis\\\\GisPolygonTest\\:\\:testPrepareRowAsOl\\(\\) has parameter \\$scale_data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: test/classes/Gis/GisPolygonTest.php
 
@@ -11383,22 +11103,22 @@ parameters:
 		-
 			message: "#^Call to method PHPUnit\\\\Framework\\\\Assert\\:\\:assertIsArray\\(\\) with array will always evaluate to true\\.$#"
 			count: 1
-			path: test/classes/ThemeManagerTest.php
+			path: test/classes/Theme/ThemeManagerTest.php
 
 		-
 			message: "#^Call to method PHPUnit\\\\Framework\\\\Assert\\:\\:assertTrue\\(\\) with true will always evaluate to true\\.$#"
 			count: 1
-			path: test/classes/ThemeManagerTest.php
+			path: test/classes/Theme/ThemeManagerTest.php
 
 		-
-			message: "#^Call to method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'PhpMyAdmin\\\\\\\\Theme' and PhpMyAdmin\\\\Theme will always evaluate to true\\.$#"
+			message: "#^Call to method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'PhpMyAdmin\\\\\\\\Theme\\\\\\\\Theme' and PhpMyAdmin\\\\Theme\\\\Theme will always evaluate to true\\.$#"
 			count: 1
-			path: test/classes/ThemeTest.php
+			path: test/classes/Theme/ThemeTest.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\ThemeTest\\:\\:providerForGetImgPath\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tests\\\\Theme\\\\ThemeTest\\:\\:providerForGetImgPath\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: test/classes/ThemeTest.php
+			path: test/classes/Theme/ThemeTest.php
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\TrackerTest\\:\\:getTableNameData\\(\\) return type has no value type specified in iterable type array\\.$#"

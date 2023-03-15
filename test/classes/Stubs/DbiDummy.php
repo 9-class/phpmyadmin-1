@@ -1368,7 +1368,7 @@ class DbiDummy implements DbiExtension
             ],
             [
                 'query' => 'SELECT COUNT(*) FROM `pma_test`.`table1`',
-                'result' => [[0]],
+                'result' => [],
             ],
             [
                 'query' => 'SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.'
@@ -2325,13 +2325,13 @@ class DbiDummy implements DbiExtension
                 'query' => 'SELECT MAX(version) FROM `pmadb`.`tracking` WHERE `db_name` = \'db\''
                     . ' AND `table_name` = \'hello_world\'',
                 'columns' => ['version'],
-                'result' => [['10']],
+                'result' => [],
             ],
             [
                 'query' => 'SELECT MAX(version) FROM `pmadb`.`tracking` WHERE `db_name` = \'db\''
                     . ' AND `table_name` = \'hello_lovely_world\'',
                 'columns' => ['version'],
-                'result' => [['10']],
+                'result' => [],
             ],
             [
                 'query' => 'SELECT MAX(version) FROM `pmadb`.`tracking` WHERE `db_name` = \'db\''

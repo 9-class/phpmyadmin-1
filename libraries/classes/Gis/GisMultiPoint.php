@@ -81,7 +81,7 @@ class GisMultiPoint extends GisGeometry
 
         // Trim to remove leading 'MULTIPOINT(' and trailing ')'
         $multipoint = mb_substr($spatial, 11, -1);
-        $points_arr = $this->extractPoints($multipoint, $scale_data);
+        $points_arr = $this->extractPoints1d($multipoint, $scale_data);
 
         foreach ($points_arr as $point) {
             // draw a small circle to mark the point
@@ -139,7 +139,7 @@ class GisMultiPoint extends GisGeometry
 
         // Trim to remove leading 'MULTIPOINT(' and trailing ')'
         $multipoint = mb_substr($spatial, 11, -1);
-        $points_arr = $this->extractPoints($multipoint, $scale_data);
+        $points_arr = $this->extractPoints1d($multipoint, $scale_data);
 
         foreach ($points_arr as $point) {
             // draw a small circle to mark the point
@@ -182,11 +182,11 @@ class GisMultiPoint extends GisGeometry
 
         // Trim to remove leading 'MULTIPOINT(' and trailing ')'
         $multipoint = mb_substr($spatial, 11, -1);
-        $points_arr = $this->extractPoints($multipoint, $scale_data);
+        $points_arr = $this->extractPoints1d($multipoint, $scale_data);
 
         $row = '';
         foreach ($points_arr as $point) {
-            if (((float) $point[0]) === 0.0 || ((float) $point[1]) === 0.0) {
+            if ($point[0] === 0.0 || $point[1] === 0.0) {
                 continue;
             }
 
@@ -207,61 +207,49 @@ class GisMultiPoint extends GisGeometry
      * Prepares JavaScript related to a row in the GIS dataset
      * to visualize it with OpenLayers.
      *
-     * @param string $spatial    GIS MULTIPOINT object
-     * @param int    $srid       Spatial reference ID
-     * @param string $label      Label for the GIS MULTIPOINT object
-     * @param int[]  $color      Color for the GIS MULTIPOINT object
-     * @param array  $scale_data Array containing data related to scaling
+     * @param string $spatial GIS MULTIPOINT object
+     * @param int    $srid    Spatial reference ID
+     * @param string $label   Label for the GIS MULTIPOINT object
+     * @param int[]  $color   Color for the GIS MULTIPOINT object
      *
      * @return string JavaScript related to a row in the GIS dataset
      */
     public function prepareRowAsOl(
-        $spatial,
+        string $spatial,
         int $srid,
         string $label,
         array $color,
-        array $scale_data,
     ): string {
         $fill_style = ['color' => 'white'];
         $stroke_style = [
             'color' => $color,
             'width' => 2,
         ];
-        $result = 'var fill = new ol.style.Fill(' . json_encode($fill_style) . ');'
-            . 'var stroke = new ol.style.Stroke(' . json_encode($stroke_style) . ');'
-            . 'var style = new ol.style.Style({'
+        $style = 'new ol.style.Style({'
             . 'image: new ol.style.Circle({'
-            . 'fill: fill,'
-            . 'stroke: stroke,'
+            . 'fill: new ol.style.Fill(' . json_encode($fill_style) . '),'
+            . 'stroke: new ol.style.Stroke(' . json_encode($stroke_style) . '),'
             . 'radius: 3'
-            . '}),'
-            . 'fill: fill,'
-            . 'stroke: stroke';
+            . '})';
         if ($label !== '') {
             $text_style = [
                 'text' => $label,
                 'offsetY' => -9,
             ];
-            $result .= ',text: new ol.style.Text(' . json_encode($text_style) . ')';
+            $style .= ',text: new ol.style.Text(' . json_encode($text_style) . ')';
         }
 
-        $result .= '});';
-
-        if ($srid === 0) {
-            $srid = 4326;
-        }
-
-        $result .= $this->getBoundsForOl($srid, $scale_data);
+        $style .= '})';
 
         // Trim to remove leading 'MULTIPOINT(' and trailing ')'
-        $multipoint = mb_substr($spatial, 11, -1);
-        $points_arr = $this->extractPoints($multipoint, null);
+        $wktCoordinates = mb_substr($spatial, 11, -1);
+        $olGeometry = $this->toOpenLayersObject(
+            'ol.geom.MultiPoint',
+            $this->extractPoints1d($wktCoordinates, null),
+            $srid,
+        );
 
-        return $result . 'var multiPoint = new ol.geom.MultiPoint('
-            . $this->getPointsArrayForOpenLayers($points_arr, $srid) . ');'
-            . 'var feature = new ol.Feature({geometry: multiPoint});'
-            . 'feature.setStyle(style);'
-            . 'vectorLayer.addFeature(feature);';
+        return $this->addGeometryToLayer($olGeometry, $style);
     }
 
     /**
@@ -326,7 +314,7 @@ class GisMultiPoint extends GisGeometry
     {
         // Trim to remove leading 'MULTIPOINT(' and trailing ')'
         $wkt_points = mb_substr($wkt, 11, -1);
-        $points = $this->extractPoints($wkt_points, null);
+        $points = $this->extractPoints1d($wkt_points, null);
 
         $no_of_points = count($points);
         $coords = ['no_of_points' => $no_of_points];
@@ -338,32 +326,5 @@ class GisMultiPoint extends GisGeometry
         }
 
         return $coords;
-    }
-
-    /**
-     * Overridden to make sure that only the points having valid values
-     * for x and y coordinates are added.
-     *
-     * @param array $points_arr x and y coordinates for each point
-     * @param int   $srid       spatial reference id
-     *
-     * @return string JavaScript for adding an array of points to OpenLayers
-     */
-    protected function getPointsArrayForOpenLayers(array $points_arr, int $srid): string
-    {
-        $ol_array = 'new Array(';
-        foreach ($points_arr as $point) {
-            if ($point[0] == '' || $point[1] == '') {
-                continue;
-            }
-
-            $ol_array .= $this->getPointForOpenLayers($point, $srid) . '.getCoordinates(), ';
-        }
-
-        if (mb_substr($ol_array, -2) === ', ') {
-            $ol_array = mb_substr($ol_array, 0, -2);
-        }
-
-        return $ol_array . ')';
     }
 }

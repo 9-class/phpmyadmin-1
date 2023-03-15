@@ -81,7 +81,7 @@ class GisLineString extends GisGeometry
 
         // Trim to remove leading 'LINESTRING(' and trailing ')'
         $lineString = mb_substr($spatial, 11, -1);
-        $points_arr = $this->extractPoints($lineString, $scale_data);
+        $points_arr = $this->extractPoints1d($lineString, $scale_data);
 
         foreach ($points_arr as $point) {
             if (isset($temp_point)) {
@@ -132,7 +132,7 @@ class GisLineString extends GisGeometry
 
         // Trim to remove leading 'LINESTRING(' and trailing ')'
         $linesrting = mb_substr($spatial, 11, -1);
-        $points_arr = $this->extractPoints($linesrting, $scale_data);
+        $points_arr = $this->extractPoints1d($linesrting, $scale_data);
 
         foreach ($points_arr as $point) {
             if (isset($temp_point)) {
@@ -176,7 +176,7 @@ class GisLineString extends GisGeometry
 
         // Trim to remove leading 'LINESTRING(' and trailing ')'
         $linesrting = mb_substr($spatial, 11, -1);
-        $points_arr = $this->extractPoints($linesrting, $scale_data);
+        $points_arr = $this->extractPoints1d($linesrting, $scale_data);
 
         $row = '<polyline points="';
         foreach ($points_arr as $point) {
@@ -197,44 +197,38 @@ class GisLineString extends GisGeometry
      * Prepares JavaScript related to a row in the GIS dataset
      * to visualize it with OpenLayers.
      *
-     * @param string $spatial    GIS LINESTRING object
-     * @param int    $srid       Spatial reference ID
-     * @param string $label      Label for the GIS LINESTRING object
-     * @param int[]  $color      Color for the GIS LINESTRING object
-     * @param array  $scale_data Array containing data related to scaling
+     * @param string $spatial GIS LINESTRING object
+     * @param int    $srid    Spatial reference ID
+     * @param string $label   Label for the GIS LINESTRING object
+     * @param int[]  $color   Color for the GIS LINESTRING object
      *
      * @return string JavaScript related to a row in the GIS dataset
      */
-    public function prepareRowAsOl($spatial, int $srid, string $label, array $color, array $scale_data): string
+    public function prepareRowAsOl(string $spatial, int $srid, string $label, array $color): string
     {
         $stroke_style = [
             'color' => $color,
             'width' => 2,
         ];
 
-        $result = 'var style = new ol.style.Style({'
+        $style = 'new ol.style.Style({'
             . 'stroke: new ol.style.Stroke(' . json_encode($stroke_style) . ')';
         if ($label !== '') {
             $text_style = ['text' => $label];
-            $result .= ', text: new ol.style.Text(' . json_encode($text_style) . ')';
+            $style .= ', text: new ol.style.Text(' . json_encode($text_style) . ')';
         }
 
-        $result .= '});';
-
-        if ($srid === 0) {
-            $srid = 4326;
-        }
-
-        $result .= $this->getBoundsForOl($srid, $scale_data);
+        $style .= '})';
 
         // Trim to remove leading 'LINESTRING(' and trailing ')'
-        $linesrting = mb_substr($spatial, 11, -1);
-        $points_arr = $this->extractPoints($linesrting, null);
+        $wktCoordinates = mb_substr($spatial, 11, -1);
+        $olGeometry = $this->toOpenLayersObject(
+            'ol.geom.LineString',
+            $this->extractPoints1d($wktCoordinates, null),
+            $srid,
+        );
 
-        return $result . 'var line = new ol.Feature({geometry: '
-            . $this->getLineForOpenLayers($points_arr, $srid) . '});'
-            . 'line.setStyle(style);'
-            . 'vectorLayer.addFeature(line);';
+        return $this->addGeometryToLayer($olGeometry, $style);
     }
 
     /**
@@ -279,7 +273,7 @@ class GisLineString extends GisGeometry
     {
         // Trim to remove leading 'LINESTRING(' and trailing ')'
         $linestring = mb_substr($wkt, 11, -1);
-        $points_arr = $this->extractPoints($linestring, null);
+        $points_arr = $this->extractPoints1d($linestring, null);
 
         $no_of_points = count($points_arr);
         $coords = ['no_of_points' => $no_of_points];

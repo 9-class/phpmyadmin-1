@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PhpMyAdmin\Tests\Gis;
 
-use PhpMyAdmin\Gis\GisGeometry;
 use PhpMyAdmin\Gis\GisMultiPoint;
 use PhpMyAdmin\Gis\ScaleData;
 use PhpMyAdmin\Image\ImageWrapper;
@@ -19,34 +18,10 @@ use function file_exists;
  */
 class GisMultiPointTest extends GisGeomTestCase
 {
-    protected GisGeometry $object;
-
-    /**
-     * Sets up the fixture, for example, opens a network connection.
-     * This method is called before a test is executed.
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->object = GisMultiPoint::singleton();
-    }
-
-    /**
-     * Tears down the fixture, for example, closes a network connection.
-     * This method is called after a test is executed.
-     */
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-
-        unset($this->object);
-    }
-
     /**
      * data provider for testGenerateWkt
      *
-     * @return array data for testGenerateWkt
+     * @return array<array{array<mixed>, int, string|null, string}>
      */
     public static function providerForTestGenerateWkt(): array
     {
@@ -86,6 +61,22 @@ class GisMultiPointTest extends GisGeomTestCase
     }
 
     /**
+     * Test for generateWkt
+     *
+     * @param array<mixed> $gis_data
+     * @param int          $index    index in $gis_data
+     * @param string|null  $empty    empty parameter
+     * @param string       $output   expected output
+     *
+     * @dataProvider providerForTestGenerateWkt
+     */
+    public function testGenerateWkt(array $gis_data, int $index, string|null $empty, string $output): void
+    {
+        $object = GisMultiPoint::singleton();
+        $this->assertEquals($output, $object->generateWkt($gis_data, $index, $empty));
+    }
+
+    /**
      * test getShape method
      */
     public function testGetShape(): void
@@ -104,16 +95,28 @@ class GisMultiPointTest extends GisGeomTestCase
             ],
         ];
 
-        $this->assertEquals(
-            'MULTIPOINT(5.02 8.45,6.14 0.15)',
-            $this->object->getShape($gis_data),
-        );
+        $object = GisMultiPoint::singleton();
+        $this->assertEquals('MULTIPOINT(5.02 8.45,6.14 0.15)', $object->getShape($gis_data));
+    }
+
+    /**
+     * test generateParams method
+     *
+     * @param string       $wkt    point in WKT form
+     * @param array<mixed> $params expected output array
+     *
+     * @dataProvider providerForTestGenerateParams
+     */
+    public function testGenerateParams(string $wkt, array $params): void
+    {
+        $object = GisMultiPoint::singleton();
+        $this->assertEquals($params, $object->generateParams($wkt));
     }
 
     /**
      * data provider for testGenerateParams
      *
-     * @return array data for testGenerateParams
+     * @return array<array{string, array<mixed>}>
      */
     public static function providerForTestGenerateParams(): array
     {
@@ -141,6 +144,20 @@ class GisMultiPointTest extends GisGeomTestCase
     }
 
     /**
+     * test scaleRow method
+     *
+     * @param string    $spatial spatial data of a row
+     * @param ScaleData $min_max expected results
+     *
+     * @dataProvider providerForTestScaleRow
+     */
+    public function testScaleRow(string $spatial, ScaleData $min_max): void
+    {
+        $object = GisMultiPoint::singleton();
+        $this->assertEquals($min_max, $object->scaleRow($spatial));
+    }
+
+    /**
      * data provider for testScaleRow
      *
      * @return array data for testScaleRow
@@ -158,9 +175,10 @@ class GisMultiPointTest extends GisGeomTestCase
     /** @requires extension gd */
     public function testPrepareRowAsPng(): void
     {
+        $object = GisMultiPoint::singleton();
         $image = ImageWrapper::create(200, 124, ['red' => 229, 'green' => 229, 'blue' => 229]);
         $this->assertNotNull($image);
-        $return = $this->object->prepareRowAsPng(
+        $return = $object->prepareRowAsPng(
             'MULTIPOINT(12 35,48 75,69 23,25 45,14 53,35 78)',
             'image',
             [176, 46, 224],
@@ -193,7 +211,8 @@ class GisMultiPointTest extends GisGeomTestCase
         array $scale_data,
         TCPDF $pdf,
     ): void {
-        $return = $this->object->prepareRowAsPdf($spatial, $label, $color, $scale_data, $pdf);
+        $object = GisMultiPoint::singleton();
+        $return = $object->prepareRowAsPdf($spatial, $label, $color, $scale_data, $pdf);
 
         $fileExpectedArch = $this->testDir . '/multipoint-expected-' . $this->getArch() . '.pdf';
         $fileExpectedGeneric = $this->testDir . '/multipoint-expected.pdf';
@@ -240,7 +259,8 @@ class GisMultiPointTest extends GisGeomTestCase
         array $scaleData,
         string $output,
     ): void {
-        $svg = $this->object->prepareRowAsSvg($spatial, $label, $color, $scaleData);
+        $object = GisMultiPoint::singleton();
+        $svg = $object->prepareRowAsSvg($spatial, $label, $color, $scaleData);
         $this->assertEquals($output, $svg);
     }
 
@@ -280,12 +300,11 @@ class GisMultiPointTest extends GisGeomTestCase
     /**
      * test case for prepareRowAsOl() method
      *
-     * @param string $spatial    GIS MULTIPOINT object
-     * @param int    $srid       spatial reference ID
-     * @param string $label      label for the GIS MULTIPOINT object
-     * @param int[]  $color      color for the GIS MULTIPOINT object
-     * @param array  $scale_data array containing data related to scaling
-     * @param string $output     expected output
+     * @param string $spatial GIS MULTIPOINT object
+     * @param int    $srid    spatial reference ID
+     * @param string $label   label for the GIS MULTIPOINT object
+     * @param int[]  $color   color for the GIS MULTIPOINT object
+     * @param string $output  expected output
      *
      * @dataProvider providerForPrepareRowAsOl
      */
@@ -294,10 +313,10 @@ class GisMultiPointTest extends GisGeomTestCase
         int $srid,
         string $label,
         array $color,
-        array $scale_data,
         string $output,
     ): void {
-        $ol = $this->object->prepareRowAsOl($spatial, $srid, $label, $color, $scale_data);
+        $object = GisMultiPoint::singleton();
+        $ol = $object->prepareRowAsOl($spatial, $srid, $label, $color);
         $this->assertEquals($output, $ol);
     }
 
@@ -314,29 +333,12 @@ class GisMultiPointTest extends GisGeomTestCase
                 4326,
                 'Ol',
                 [176, 46, 224],
-                [
-                    'minX' => '0',
-                    'minY' => '0',
-                    'maxX' => '1',
-                    'maxY' => '1',
-                ],
-                'var fill = new ol.style.Fill({"color":"white"});var stroke = new ol.style.Stroke({'
-                . '"color":[176,46,224],"width":2});var style = new ol.style.Style({image: new ol.s'
-                . 'tyle.Circle({fill: fill,stroke: stroke,radius: 3}),fill: fill,stroke: stroke,tex'
-                . 't: new ol.style.Text({"text":"Ol","offsetY":-9})});var minLoc = [0, 0];var maxLo'
-                . 'c = [1, 1];var ext = ol.extent.boundingExtent([minLoc, maxLoc]);ext = ol.proj.tr'
-                . 'ansformExtent(ext, ol.proj.get("EPSG:4326"), ol.proj.get(\'EPSG:3857\'));map.get'
-                . 'View().fit(ext, map.getSize());var multiPoint = new ol.geom.MultiPoint(new Array'
-                . '((new ol.geom.Point([12,35]).transform(ol.proj.get("EPSG:4326"), ol.proj.get(\'E'
-                . 'PSG:3857\'))).getCoordinates(), (new ol.geom.Point([48,75]).transform(ol.proj.ge'
-                . 't("EPSG:4326"), ol.proj.get(\'EPSG:3857\'))).getCoordinates(), (new ol.geom.Poin'
-                . 't([69,23]).transform(ol.proj.get("EPSG:4326"), ol.proj.get(\'EPSG:3857\'))).getC'
-                . 'oordinates(), (new ol.geom.Point([25,45]).transform(ol.proj.get("EPSG:4326"), ol'
-                . '.proj.get(\'EPSG:3857\'))).getCoordinates(), (new ol.geom.Point([14,53]).transfo'
-                . 'rm(ol.proj.get("EPSG:4326"), ol.proj.get(\'EPSG:3857\'))).getCoordinates(), (new'
-                . ' ol.geom.Point([35,78]).transform(ol.proj.get("EPSG:4326"), ol.proj.get(\'EPSG:3'
-                . '857\'))).getCoordinates()));var feature = new ol.Feature({geometry: multiPoint})'
-                . ';feature.setStyle(style);vectorLayer.addFeature(feature);',
+                'var feature = new ol.Feature(new ol.geom.MultiPoint([[12,35],[48,75],[69,23],[25,4'
+                . '5],[14,53],[35,78]]).transform(\'EPSG:4326\', \'EPSG:3857\'));feature.setStyle(n'
+                . 'ew ol.style.Style({image: new ol.style.Circle({fill: new ol.style.Fill({"color":'
+                . '"white"}),stroke: new ol.style.Stroke({"color":[176,46,224],"width":2}),radius: '
+                . '3}),text: new ol.style.Text({"text":"Ol","offsetY":-9})}));vectorSource.addFeatur'
+                . 'e(feature);',
             ],
         ];
     }

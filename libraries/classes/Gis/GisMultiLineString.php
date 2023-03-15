@@ -95,7 +95,7 @@ class GisMultiLineString extends GisGeometry
 
         $first_line = true;
         foreach ($linestirngs as $linestring) {
-            $points_arr = $this->extractPoints($linestring, $scale_data);
+            $points_arr = $this->extractPoints1d($linestring, $scale_data);
             foreach ($points_arr as $point) {
                 if (isset($temp_point)) {
                     // draw line section
@@ -154,7 +154,7 @@ class GisMultiLineString extends GisGeometry
 
         $first_line = true;
         foreach ($linestirngs as $linestring) {
-            $points_arr = $this->extractPoints($linestring, $scale_data);
+            $points_arr = $this->extractPoints1d($linestring, $scale_data);
             foreach ($points_arr as $point) {
                 if (isset($temp_point)) {
                     // draw line section
@@ -205,7 +205,7 @@ class GisMultiLineString extends GisGeometry
 
         $row = '';
         foreach ($linestirngs as $linestring) {
-            $points_arr = $this->extractPoints($linestring, $scale_data);
+            $points_arr = $this->extractPoints1d($linestring, $scale_data);
 
             $row .= '<polyline points="';
             foreach ($points_arr as $point) {
@@ -228,46 +228,38 @@ class GisMultiLineString extends GisGeometry
      * Prepares JavaScript related to a row in the GIS dataset
      * to visualize it with OpenLayers.
      *
-     * @param string $spatial    GIS MULTILINESTRING object
-     * @param int    $srid       Spatial reference ID
-     * @param string $label      Label for the GIS MULTILINESTRING object
-     * @param int[]  $color      Color for the GIS MULTILINESTRING object
-     * @param array  $scale_data Array containing data related to scaling
+     * @param string $spatial GIS MULTILINESTRING object
+     * @param int    $srid    Spatial reference ID
+     * @param string $label   Label for the GIS MULTILINESTRING object
+     * @param int[]  $color   Color for the GIS MULTILINESTRING object
      *
      * @return string JavaScript related to a row in the GIS dataset
      */
-    public function prepareRowAsOl($spatial, int $srid, string $label, array $color, array $scale_data): string
+    public function prepareRowAsOl(string $spatial, int $srid, string $label, array $color): string
     {
         $stroke_style = [
             'color' => $color,
             'width' => 2,
         ];
 
-        $row = 'var style = new ol.style.Style({'
+        $style = 'new ol.style.Style({'
             . 'stroke: new ol.style.Stroke(' . json_encode($stroke_style) . ')';
         if ($label !== '') {
             $text_style = ['text' => $label];
-            $row .= ', text: new ol.style.Text(' . json_encode($text_style) . ')';
+            $style .= ', text: new ol.style.Text(' . json_encode($text_style) . ')';
         }
 
-        $row .= '});';
-
-        if ($srid === 0) {
-            $srid = 4326;
-        }
-
-        $row .= $this->getBoundsForOl($srid, $scale_data);
+        $style .= '})';
 
         // Trim to remove leading 'MULTILINESTRING((' and trailing '))'
-        $multilinestirng = mb_substr($spatial, 17, -2);
-        // Separate each linestring
-        $linestirngs = explode('),(', $multilinestirng);
+        $wktCoordinates = mb_substr($spatial, 17, -2);
+        $olGeometry = $this->toOpenLayersObject(
+            'ol.geom.MultiLineString',
+            $this->extractPoints2d($wktCoordinates, null),
+            $srid,
+        );
 
-        return $row . $this->getLineArrayForOpenLayers($linestirngs, $srid)
-            . 'var multiLineString = new ol.geom.MultiLineString(arr);'
-            . 'var feature = new ol.Feature({geometry: multiLineString});'
-            . 'feature.setStyle(style);'
-            . 'vectorLayer.addFeature(feature);';
+        return $this->addGeometryToLayer($olGeometry, $style);
     }
 
     /**
@@ -354,7 +346,7 @@ class GisMultiLineString extends GisGeometry
         $coords = ['no_of_lines' => count($wkt_linestrings)];
 
         foreach ($wkt_linestrings as $j => $wkt_linestring) {
-            $points = $this->extractPoints($wkt_linestring, null);
+            $points = $this->extractPoints1d($wkt_linestring, null);
             $no_of_points = count($points);
             $coords[$j] = ['no_of_points' => $no_of_points];
             for ($i = 0; $i < $no_of_points; $i++) {

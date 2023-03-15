@@ -592,20 +592,6 @@ class ImportCsv extends AbstractImportCsv
             $analyses[] = $this->import->analyzeTable($tables[0]);
 
             /**
-             * string $db_name (no backquotes)
-             *
-             * array $table = array(table_name, array() column_names, array()() rows)
-             * array $tables = array of "$table"s
-             *
-             * array $analysis = array(array() column_types, array() column_sizes)
-             * array $analyses = array of "$analysis"s
-             *
-             * array $create = array of SQL strings
-             *
-             * array $options = an associative array of options
-             */
-
-            /**
              * Set database name to the currently selected one, if applicable,
              * Otherwise, check if user provided the database name in the request,
              * if not, set the default name
@@ -618,15 +604,11 @@ class ImportCsv extends AbstractImportCsv
                 $newDb = 'CSV_DB ' . (count($result) + 1);
             }
 
-            [$db_name, $options] = $this->getDbnameAndOptions($GLOBALS['db'], $newDb);
-
-            /* Non-applicable parameters */
-            $create = null;
+            $db_name = $GLOBALS['db'] !== '' ? $GLOBALS['db'] : $newDb;
+            $createDb = $GLOBALS['db'] === '';
 
             /* Created and execute necessary SQL statements from data */
-            $this->import->buildSql($db_name, $tables, $analyses, $create, $options, $sqlStatements);
-
-            unset($tables, $analyses);
+            $this->import->buildSql($db_name, $tables, $analyses, createDb:$createDb, sqlData:$sqlStatements);
         }
 
         // Commit any possible data in buffers

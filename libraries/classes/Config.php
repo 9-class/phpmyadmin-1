@@ -7,6 +7,7 @@ namespace PhpMyAdmin;
 use PhpMyAdmin\Config\Settings;
 use PhpMyAdmin\Dbal\Connection;
 use PhpMyAdmin\Exceptions\ConfigException;
+use PhpMyAdmin\Theme\ThemeManager;
 use Throwable;
 
 use function __;
@@ -92,7 +93,14 @@ class Config
     /** @var array */
     public array $defaultServer = [];
 
+    private bool $isHttps;
+
     private Settings|null $config = null;
+
+    public function __construct()
+    {
+        $this->isHttps = $this->isHttps();
+    }
 
     /**
      * @param string|null $source source to read config from
@@ -775,8 +783,9 @@ class Config
      */
     public function isHttps(): bool
     {
-        if ($this->get('is_https') !== null) {
-            return (bool) $this->get('is_https');
+        $is_https = $this->get('is_https');
+        if ($is_https !== null) {
+            return (bool) $is_https;
         }
 
         $url = $this->get('PmaAbsoluteUri');
@@ -886,7 +895,7 @@ class Config
             time() - 3600,
             $this->getRootPath(),
             '',
-            $this->isHttps(),
+            $this->isHttps,
         );
     }
 
@@ -950,7 +959,7 @@ class Config
                 'expires' => $validity,
                 'path' => $this->getRootPath(),
                 'domain' => '',
-                'secure' => $this->isHttps(),
+                'secure' => $this->isHttps,
                 'httponly' => $httponly,
                 'samesite' => $cookieSameSite,
             ];
@@ -981,7 +990,7 @@ class Config
      */
     public function getCookieName(string $cookieName): string
     {
-        return $cookieName . ( $this->isHttps() ? '_https' : '' );
+        return $cookieName . ( $this->isHttps ? '_https' : '' );
     }
 
     /**
