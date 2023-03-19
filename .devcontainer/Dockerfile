@@ -7,4 +7,6 @@ RUN apt-get update && \
 
 COPY php.ini /usr/local/etc/php/
 
+docker build -t my-phpmyadmin .
+
 EXPOSE 80
