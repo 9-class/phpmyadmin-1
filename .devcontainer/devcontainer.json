@@ -1,0 +1,11 @@
+{
+  "name": "PHPMyAdmin Dev Container",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "phpmyadmin",
+  "workspaceFolder": "/workspace",
+  "extensions": [
+    "felixfbecker.php-debug",
+    "ms-azuretools.vscode-docker",
+    "ms-vscode-remote.remote-containers"
+  ]
+}
