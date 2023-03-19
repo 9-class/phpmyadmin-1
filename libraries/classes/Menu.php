@@ -10,6 +10,7 @@ namespace PhpMyAdmin;
 use PhpMyAdmin\ConfigStorage\Relation;
 use PhpMyAdmin\Dbal\Connection;
 use PhpMyAdmin\Query\Utilities;
+use PhpMyAdmin\Tracking\Tracker;
 use PhpMyAdmin\Utils\SessionCache;
 
 use function __;
@@ -106,7 +107,7 @@ class Menu
      *
      * @return array list of allowed tabs
      */
-    private function getAllowedTabs($level): array
+    private function getAllowedTabs(string $level): array
     {
         $cacheKey = 'menu-levels-' . $level;
         if (SessionCache::has($cacheKey)) {

@@ -857,7 +857,7 @@ parameters:
 
 		-
 			message: "#^Casting to string something that's already string\\.$#"
-			count: 4
+			count: 1
 			path: libraries/classes/ConfigStorage/Relation.php
 
 		-
@@ -1566,16 +1566,6 @@ parameters:
 			path: libraries/classes/Controllers/Database/StructureController.php
 
 		-
-			message: "#^Parameter \\#4 \\$formattedSize of method PhpMyAdmin\\\\Controllers\\\\Database\\\\StructureController\\:\\:getValuesForAriaTable\\(\\) expects int, string given\\.$#"
-			count: 1
-			path: libraries/classes/Controllers/Database/StructureController.php
-
-		-
-			message: "#^Parameter \\#6 \\$formattedOverhead of method PhpMyAdmin\\\\Controllers\\\\Database\\\\StructureController\\:\\:getValuesForAriaTable\\(\\) expects int, string given\\.$#"
-			count: 1
-			path: libraries/classes/Controllers/Database/StructureController.php
-
-		-
 			message: "#^Property PhpMyAdmin\\\\Controllers\\\\Database\\\\StructureController\\:\\:\\$tables type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/Controllers/Database/StructureController.php
@@ -1601,17 +1591,17 @@ parameters:
 			path: libraries/classes/Controllers/Database/TrackingController.php
 
 		-
-			message: "#^Parameter \\#2 \\$selected of method PhpMyAdmin\\\\Tracking\\:\\:createTrackingForMultipleTables\\(\\) expects array, mixed given\\.$#"
+			message: "#^Parameter \\#2 \\$selected of method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:createTrackingForMultipleTables\\(\\) expects array, mixed given\\.$#"
 			count: 1
 			path: libraries/classes/Controllers/Database/TrackingController.php
 
 		-
-			message: "#^Parameter \\#2 \\$tableName of static method PhpMyAdmin\\\\Tracker\\:\\:deleteTracking\\(\\) expects string, mixed given\\.$#"
+			message: "#^Parameter \\#2 \\$tableName of static method PhpMyAdmin\\\\Tracking\\\\Tracker\\:\\:deleteTracking\\(\\) expects string, mixed given\\.$#"
 			count: 2
 			path: libraries/classes/Controllers/Database/TrackingController.php
 
 		-
-			message: "#^Parameter \\#3 \\$version of method PhpMyAdmin\\\\Tracking\\:\\:createTrackingForMultipleTables\\(\\) expects string, mixed given\\.$#"
+			message: "#^Parameter \\#3 \\$version of method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:createTrackingForMultipleTables\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: libraries/classes/Controllers/Database/TrackingController.php
 
@@ -1802,16 +1792,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#3 \\$dbName of method PhpMyAdmin\\\\Navigation\\\\Navigation\\:\\:unhideNavigationItem\\(\\) expects string, mixed given\\.$#"
-			count: 1
-			path: libraries/classes/Controllers/NavigationController.php
-
-		-
-			message: "#^Parameter \\#4 \\$tableName of method PhpMyAdmin\\\\Navigation\\\\Navigation\\:\\:hideNavigationItem\\(\\) expects string\\|null, mixed given\\.$#"
-			count: 1
-			path: libraries/classes/Controllers/NavigationController.php
-
-		-
-			message: "#^Parameter \\#4 \\$tableName of method PhpMyAdmin\\\\Navigation\\\\Navigation\\:\\:unhideNavigationItem\\(\\) expects string\\|null, mixed given\\.$#"
 			count: 1
 			path: libraries/classes/Controllers/NavigationController.php
 
@@ -2269,11 +2249,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$test of static method PhpMyAdmin\\\\Mime\\:\\:detect\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: libraries/classes/Controllers/Table/GetFieldController.php
-
-		-
-			message: "#^Class PhpMyAdmin\\\\Controllers\\\\Table\\\\GisVisualizationController has an uninitialized property \\$visualization\\. Give it default value or assign it in the constructor\\.$#"
-			count: 1
-			path: libraries/classes/Controllers/Table/GisVisualizationController.php
 
 		-
 			message: "#^Parameter \\#1 \\$value of function count expects array\\|Countable, mixed given\\.$#"
@@ -2736,11 +2711,6 @@ parameters:
 			path: libraries/classes/Database/CentralColumns.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Database\\\\CentralColumns\\:\\:makeConsistentWithList\\(\\) has parameter \\$selected_tables with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Database/CentralColumns.php
-
-		-
 			message: "#^Method PhpMyAdmin\\\\Database\\\\CentralColumns\\:\\:syncUniqueColumns\\(\\) has parameter \\$field_select with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/Database/CentralColumns.php
@@ -3052,11 +3022,6 @@ parameters:
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Database\\\\Qbe\\:\\:loadRelationsForTable\\(\\) has parameter \\$relations with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Database/Qbe.php
-
-		-
-			message: "#^Parameter \\#2 \\$sortOrder of method PhpMyAdmin\\\\Database\\\\Qbe\\:\\:getSortOrderSelectCell\\(\\) expects int, null given\\.$#"
 			count: 1
 			path: libraries/classes/Database/Qbe.php
 
@@ -3811,11 +3776,6 @@ parameters:
 			path: libraries/classes/Display/Results.php
 
 		-
-			message: "#^Parameter \\#3 \\$total of method PhpMyAdmin\\\\Display\\\\Results\\:\\:setMessageInformation\\(\\) expects int, mixed given\\.$#"
-			count: 1
-			path: libraries/classes/Display/Results.php
-
-		-
 			message: "#^Parameter \\#5 \\$sortExpressionNoDirection of method PhpMyAdmin\\\\Display\\\\Results\\:\\:getTableHeaders\\(\\) expects array\\<int, string\\>, array\\<int, string\\|null\\> given\\.$#"
 			count: 1
 			path: libraries/classes/Display/Results.php
@@ -3831,7 +3791,7 @@ parameters:
 			path: libraries/classes/Display/Results.php
 
 		-
-			message: "#^Parameter \\#9 \\$colVisibElement of method PhpMyAdmin\\\\Display\\\\Results\\:\\:getOrderLinkAndSortedHeaderHtml\\(\\) expects string, mixed given\\.$#"
+			message: "#^Parameter \\#9 \\$colVisibElement of method PhpMyAdmin\\\\Display\\\\Results\\:\\:getOrderLinkAndSortedHeaderHtml\\(\\) expects string\\|null, mixed given\\.$#"
 			count: 1
 			path: libraries/classes/Display/Results.php
 
@@ -4606,52 +4566,17 @@ parameters:
 			path: libraries/classes/Gis/GisPolygon.php
 
 		-
-			message: "#^Call to function is_numeric\\(\\) with int will always evaluate to true\\.$#"
-			count: 2
-			path: libraries/classes/Gis/GisVisualization.php
-
-		-
 			message: "#^Cannot call method Output\\(\\) on mixed\\.$#"
 			count: 1
 			path: libraries/classes/Gis/GisVisualization.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisVisualization\\:\\:__construct\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
 			path: libraries/classes/Gis/GisVisualization.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisVisualization\\:\\:__construct\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisVisualization.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisVisualization\\:\\:fetchRawData\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisVisualization.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisVisualization\\:\\:get\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisVisualization.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisVisualization\\:\\:getByData\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisVisualization.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisVisualization\\:\\:getByData\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisVisualization.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisVisualization\\:\\:getSettings\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisVisualization.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisVisualization\\:\\:prepareDataSet\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			message: "#^Cannot cast mixed to string\\.$#"
 			count: 1
 			path: libraries/classes/Gis/GisVisualization.php
 
@@ -4661,47 +4586,7 @@ parameters:
 			path: libraries/classes/Gis/GisVisualization.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisVisualization\\:\\:scaleDataSet\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisVisualization.php
-
-		-
 			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisVisualization\\:\\:scaleDataSet\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisVisualization.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Gis\\\\GisVisualization\\:\\:setUserSpecifiedSettings\\(\\) has parameter \\$userSpecifiedSettings with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisVisualization.php
-
-		-
-			message: "#^Parameter \\#1 \\$sql_query of class PhpMyAdmin\\\\Gis\\\\GisVisualization constructor expects string, null given\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisVisualization.php
-
-		-
-			message: "#^Parameter \\#3 \\$row of class PhpMyAdmin\\\\Gis\\\\GisVisualization constructor expects int, null given\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisVisualization.php
-
-		-
-			message: "#^Parameter \\#4 \\$pos of class PhpMyAdmin\\\\Gis\\\\GisVisualization constructor expects int, null given\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisVisualization.php
-
-		-
-			message: "#^Property PhpMyAdmin\\\\Gis\\\\GisVisualization\\:\\:\\$data type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisVisualization.php
-
-		-
-			message: "#^Property PhpMyAdmin\\\\Gis\\\\GisVisualization\\:\\:\\$settings type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Gis/GisVisualization.php
-
-		-
-			message: "#^Property PhpMyAdmin\\\\Gis\\\\GisVisualization\\:\\:\\$userSpecifiedSettings type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/Gis/GisVisualization.php
 
@@ -4764,11 +4649,6 @@ parameters:
 			message: "#^Method PhpMyAdmin\\\\Header\\:\\:getJsParams\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/Header.php
-
-		-
-			message: "#^Casting to string something that's already string\\.$#"
-			count: 1
-			path: libraries/classes/Html/Generator.php
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Html\\\\Generator\\:\\:getDefaultFunctionForField\\(\\) has parameter \\$field with no value type specified in iterable type array\\.$#"
@@ -4964,11 +4844,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$list of static method PhpMyAdmin\\\\SqlParser\\\\Utils\\\\Query\\:\\:getClause\\(\\) expects PhpMyAdmin\\\\SqlParser\\\\TokensList, PhpMyAdmin\\\\SqlParser\\\\TokensList\\|null given\\.$#"
 			count: 6
 			path: libraries/classes/Import/SimulateDml.php
-
-		-
-			message: "#^Casting to string something that's already string\\.$#"
-			count: 1
-			path: libraries/classes/Index.php
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Index\\:\\:__construct\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
@@ -5336,11 +5211,6 @@ parameters:
 			path: libraries/classes/InsertEdit.php
 
 		-
-			message: "#^Parameter \\#2 \\$keyId of method PhpMyAdmin\\\\InsertEdit\\:\\:showEmptyResultMessageOrSetUniqueCondition\\(\\) expects string, \\(int\\|string\\) given\\.$#"
-			count: 1
-			path: libraries/classes/InsertEdit.php
-
-		-
 			message: "#^Parameter \\#4 \\$data of method PhpMyAdmin\\\\ConfigStorage\\\\Relation\\:\\:foreignDropdown\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: libraries/classes/InsertEdit.php
@@ -5616,16 +5486,6 @@ parameters:
 			path: libraries/classes/Navigation/Nodes/Node.php
 
 		-
-			message: "#^Casting to bool something that's already bool\\.$#"
-			count: 1
-			path: libraries/classes/Navigation/Nodes/Node.php
-
-		-
-			message: "#^Casting to string something that's already string\\.$#"
-			count: 1
-			path: libraries/classes/Navigation/Nodes/Node.php
-
-		-
 			message: "#^Method PhpMyAdmin\\\\Navigation\\\\Nodes\\\\Node\\:\\:getData\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/Navigation/Nodes/Node.php
@@ -5819,11 +5679,6 @@ parameters:
 			message: "#^Variable property access on object\\.$#"
 			count: 4
 			path: libraries/classes/Normalization.php
-
-		-
-			message: "#^Casting to string something that's already string\\.$#"
-			count: 1
-			path: libraries/classes/Operations.php
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Operations\\:\\:copyTables\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -6756,16 +6611,6 @@ parameters:
 			path: libraries/classes/Plugins/Schema/Dia/RelationStatsDia.php
 
 		-
-			message: "#^Parameter \\#2 \\$master_table of class PhpMyAdmin\\\\Plugins\\\\Schema\\\\Eps\\\\RelationStatsEps constructor expects string, PhpMyAdmin\\\\Plugins\\\\Schema\\\\Eps\\\\TableStatsEps given\\.$#"
-			count: 1
-			path: libraries/classes/Plugins/Schema/Eps/EpsRelationSchema.php
-
-		-
-			message: "#^Parameter \\#4 \\$foreign_table of class PhpMyAdmin\\\\Plugins\\\\Schema\\\\Eps\\\\RelationStatsEps constructor expects string, PhpMyAdmin\\\\Plugins\\\\Schema\\\\Eps\\\\TableStatsEps given\\.$#"
-			count: 1
-			path: libraries/classes/Plugins/Schema/Eps/EpsRelationSchema.php
-
-		-
 			message: "#^Parameter \\#4 \\$masterField of method PhpMyAdmin\\\\Plugins\\\\Schema\\\\Eps\\\\EpsRelationSchema\\:\\:addRelation\\(\\) expects string, \\(int\\|string\\) given\\.$#"
 			count: 1
 			path: libraries/classes/Plugins/Schema/Eps/EpsRelationSchema.php
@@ -6774,11 +6619,6 @@ parameters:
 			message: "#^Call to an undefined method object\\:\\:line\\(\\)\\.$#"
 			count: 7
 			path: libraries/classes/Plugins/Schema/Eps/RelationStatsEps.php
-
-		-
-			message: "#^Casting to int something that's already int\\.$#"
-			count: 3
-			path: libraries/classes/Plugins/Schema/Eps/TableStatsEps.php
 
 		-
 			message: "#^Parameter \\#1 \\$x_from of method PhpMyAdmin\\\\Plugins\\\\Schema\\\\Eps\\\\Eps\\:\\:rect\\(\\) expects int, float\\|int given\\.$#"
@@ -6861,23 +6701,8 @@ parameters:
 			path: libraries/classes/Plugins/Schema/Pdf/PdfRelationSchema.php
 
 		-
-			message: "#^Parameter \\#2 \\$master_table of class PhpMyAdmin\\\\Plugins\\\\Schema\\\\Pdf\\\\RelationStatsPdf constructor expects string, PhpMyAdmin\\\\Plugins\\\\Schema\\\\Pdf\\\\TableStatsPdf given\\.$#"
-			count: 1
-			path: libraries/classes/Plugins/Schema/Pdf/PdfRelationSchema.php
-
-		-
 			message: "#^Parameter \\#2 \\$value of method PhpMyAdmin\\\\Pdf\\:\\:setAlias\\(\\) expects string, int given\\.$#"
 			count: 2
-			path: libraries/classes/Plugins/Schema/Pdf/PdfRelationSchema.php
-
-		-
-			message: "#^Parameter \\#4 \\$fontSize of class PhpMyAdmin\\\\Plugins\\\\Schema\\\\Pdf\\\\TableStatsPdf constructor expects int, null given\\.$#"
-			count: 3
-			path: libraries/classes/Plugins/Schema/Pdf/PdfRelationSchema.php
-
-		-
-			message: "#^Parameter \\#4 \\$foreign_table of class PhpMyAdmin\\\\Plugins\\\\Schema\\\\Pdf\\\\RelationStatsPdf constructor expects string, PhpMyAdmin\\\\Plugins\\\\Schema\\\\Pdf\\\\TableStatsPdf given\\.$#"
-			count: 1
 			path: libraries/classes/Plugins/Schema/Pdf/PdfRelationSchema.php
 
 		-
@@ -6911,24 +6736,9 @@ parameters:
 			path: libraries/classes/Plugins/Schema/RelationStats.php
 
 		-
-			message: "#^Parameter \\#1 \\$table of method PhpMyAdmin\\\\Plugins\\\\Schema\\\\RelationStats\\:\\:getXy\\(\\) expects PhpMyAdmin\\\\Plugins\\\\Schema\\\\TableStats, string given\\.$#"
-			count: 2
-			path: libraries/classes/Plugins/Schema/RelationStats.php
-
-		-
 			message: "#^Call to an undefined method object\\:\\:printElementLine\\(\\)\\.$#"
 			count: 7
 			path: libraries/classes/Plugins/Schema/Svg/RelationStatsSvg.php
-
-		-
-			message: "#^Call to function is_int\\(\\) with int will always evaluate to true\\.$#"
-			count: 2
-			path: libraries/classes/Plugins/Schema/Svg/Svg.php
-
-		-
-			message: "#^Casting to string something that's already string\\.$#"
-			count: 2
-			path: libraries/classes/Plugins/Schema/Svg/Svg.php
 
 		-
 			message: "#^Parameter \\#1 \\$table of method PhpMyAdmin\\\\Plugins\\\\Schema\\\\Svg\\\\SvgRelationSchema\\:\\:setMinMax\\(\\) expects PhpMyAdmin\\\\Plugins\\\\Schema\\\\Svg\\\\TableStatsSvg, PhpMyAdmin\\\\Plugins\\\\Schema\\\\Dia\\\\TableStatsDia\\|PhpMyAdmin\\\\Plugins\\\\Schema\\\\Eps\\\\TableStatsEps\\|PhpMyAdmin\\\\Plugins\\\\Schema\\\\Pdf\\\\TableStatsPdf\\|PhpMyAdmin\\\\Plugins\\\\Schema\\\\Svg\\\\TableStatsSvg given\\.$#"
@@ -6936,37 +6746,7 @@ parameters:
 			path: libraries/classes/Plugins/Schema/Svg/SvgRelationSchema.php
 
 		-
-			message: "#^Parameter \\#1 \\$width of method PhpMyAdmin\\\\Plugins\\\\Schema\\\\Svg\\\\Svg\\:\\:startSvgDoc\\(\\) expects int, float\\|int given\\.$#"
-			count: 1
-			path: libraries/classes/Plugins/Schema/Svg/SvgRelationSchema.php
-
-		-
-			message: "#^Parameter \\#2 \\$height of method PhpMyAdmin\\\\Plugins\\\\Schema\\\\Svg\\\\Svg\\:\\:startSvgDoc\\(\\) expects int, float\\|int given\\.$#"
-			count: 1
-			path: libraries/classes/Plugins/Schema/Svg/SvgRelationSchema.php
-
-		-
-			message: "#^Parameter \\#2 \\$master_table of class PhpMyAdmin\\\\Plugins\\\\Schema\\\\Svg\\\\RelationStatsSvg constructor expects string, PhpMyAdmin\\\\Plugins\\\\Schema\\\\Dia\\\\TableStatsDia\\|PhpMyAdmin\\\\Plugins\\\\Schema\\\\Eps\\\\TableStatsEps\\|PhpMyAdmin\\\\Plugins\\\\Schema\\\\Pdf\\\\TableStatsPdf\\|PhpMyAdmin\\\\Plugins\\\\Schema\\\\Svg\\\\TableStatsSvg given\\.$#"
-			count: 1
-			path: libraries/classes/Plugins/Schema/Svg/SvgRelationSchema.php
-
-		-
-			message: "#^Parameter \\#3 \\$x of method PhpMyAdmin\\\\Plugins\\\\Schema\\\\Svg\\\\Svg\\:\\:startSvgDoc\\(\\) expects int, float\\|int given\\.$#"
-			count: 1
-			path: libraries/classes/Plugins/Schema/Svg/SvgRelationSchema.php
-
-		-
-			message: "#^Parameter \\#4 \\$foreign_table of class PhpMyAdmin\\\\Plugins\\\\Schema\\\\Svg\\\\RelationStatsSvg constructor expects string, PhpMyAdmin\\\\Plugins\\\\Schema\\\\Dia\\\\TableStatsDia\\|PhpMyAdmin\\\\Plugins\\\\Schema\\\\Eps\\\\TableStatsEps\\|PhpMyAdmin\\\\Plugins\\\\Schema\\\\Pdf\\\\TableStatsPdf\\|PhpMyAdmin\\\\Plugins\\\\Schema\\\\Svg\\\\TableStatsSvg given\\.$#"
-			count: 1
-			path: libraries/classes/Plugins/Schema/Svg/SvgRelationSchema.php
-
-		-
 			message: "#^Parameter \\#4 \\$masterField of method PhpMyAdmin\\\\Plugins\\\\Schema\\\\Svg\\\\SvgRelationSchema\\:\\:addRelation\\(\\) expects string, \\(int\\|string\\) given\\.$#"
-			count: 1
-			path: libraries/classes/Plugins/Schema/Svg/SvgRelationSchema.php
-
-		-
-			message: "#^Parameter \\#4 \\$y of method PhpMyAdmin\\\\Plugins\\\\Schema\\\\Svg\\\\Svg\\:\\:startSvgDoc\\(\\) expects int, float\\|int given\\.$#"
 			count: 1
 			path: libraries/classes/Plugins/Schema/Svg/SvgRelationSchema.php
 
@@ -7027,7 +6807,7 @@ parameters:
 
 		-
 			message: "#^Casting to string something that's already string\\.$#"
-			count: 2
+			count: 1
 			path: libraries/classes/Plugins/Transformations/Abs/DateFormatTransformationsPlugin.php
 
 		-
@@ -7147,7 +6927,7 @@ parameters:
 
 		-
 			message: "#^Casting to string something that's already string\\.$#"
-			count: 3
+			count: 1
 			path: libraries/classes/Plugins/Transformations/Abs/SubstringTransformationsPlugin.php
 
 		-
@@ -7591,11 +7371,6 @@ parameters:
 			path: libraries/classes/Server/Plugins.php
 
 		-
-			message: "#^Casting to string something that's already string\\.$#"
-			count: 1
-			path: libraries/classes/Server/Privileges.php
-
-		-
 			message: "#^Foreach overwrites \\$sqlQuery with its value variable\\.$#"
 			count: 1
 			path: libraries/classes/Server/Privileges.php
@@ -7796,22 +7571,12 @@ parameters:
 			path: libraries/classes/Server/Privileges.php
 
 		-
-			message: "#^Parameter \\#6 \\$dbname of method PhpMyAdmin\\\\Server\\\\Privileges\\:\\:addUserAndCreateDatabase\\(\\) expects string, array\\|string\\|null given\\.$#"
-			count: 1
-			path: libraries/classes/Server/Privileges.php
-
-		-
 			message: "#^Possibly invalid array key type array\\<int, string\\>\\|string\\|null\\.$#"
 			count: 1
 			path: libraries/classes/Server/Privileges.php
 
 		-
 			message: "#^Possibly invalid array key type array\\<int, string\\>\\|string\\|true\\|null\\.$#"
-			count: 1
-			path: libraries/classes/Server/Privileges.php
-
-		-
-			message: "#^Variable \\$userGroup on left side of \\?\\?\\= always exists and is not nullable\\.$#"
 			count: 1
 			path: libraries/classes/Server/Privileges.php
 
@@ -8411,11 +8176,6 @@ parameters:
 			path: libraries/classes/Table.php
 
 		-
-			message: "#^Casting to string something that's already string\\.$#"
-			count: 5
-			path: libraries/classes/Table.php
-
-		-
 			message: "#^Foreach overwrites \\$trigger with its value variable\\.$#"
 			count: 1
 			path: libraries/classes/Table.php
@@ -8571,11 +8331,6 @@ parameters:
 			path: libraries/classes/Table.php
 
 		-
-			message: "#^Parameter \\#1 \\$identifier of static method PhpMyAdmin\\\\Util\\:\\:backquote\\(\\) expects string\\|Stringable\\|null, \\(int\\|string\\) given\\.$#"
-			count: 2
-			path: libraries/classes/Table.php
-
-		-
 			message: "#^Parameter \\#1 \\$string of function substr expects string, mixed given\\.$#"
 			count: 2
 			path: libraries/classes/Table.php
@@ -8681,11 +8436,6 @@ parameters:
 			path: libraries/classes/Theme/Theme.php
 
 		-
-			message: "#^Casting to bool something that's already bool\\.$#"
-			count: 1
-			path: libraries/classes/Theme/ThemeManager.php
-
-		-
 			message: "#^If condition is always true\\.$#"
 			count: 1
 			path: libraries/classes/Theme/ThemeManager.php
@@ -8708,317 +8458,282 @@ parameters:
 		-
 			message: "#^Cannot access property \\$dest on PhpMyAdmin\\\\SqlParser\\\\Components\\\\IntoKeyword\\|null\\.$#"
 			count: 1
-			path: libraries/classes/Tracker.php
+			path: libraries/classes/Tracking/Tracker.php
 
 		-
 			message: "#^Cannot access property \\$table on PhpMyAdmin\\\\SqlParser\\\\Components\\\\Expression\\|null\\.$#"
 			count: 4
-			path: libraries/classes/Tracker.php
+			path: libraries/classes/Tracking/Tracker.php
 
 		-
 			message: "#^Cannot access property \\$table on PhpMyAdmin\\\\SqlParser\\\\Components\\\\Expression\\|string\\|null\\.$#"
 			count: 1
-			path: libraries/classes/Tracker.php
+			path: libraries/classes/Tracking/Tracker.php
 
 		-
 			message: "#^Cannot access property \\$tokens on PhpMyAdmin\\\\SqlParser\\\\TokensList\\|null\\.$#"
 			count: 1
-			path: libraries/classes/Tracker.php
+			path: libraries/classes/Tracking/Tracker.php
 
 		-
 			message: "#^Cannot access property \\$value on PhpMyAdmin\\\\SqlParser\\\\Token\\|string\\.$#"
 			count: 3
-			path: libraries/classes/Tracker.php
-
-		-
-			message: "#^Casting to string something that's already string\\.$#"
-			count: 1
-			path: libraries/classes/Tracker.php
+			path: libraries/classes/Tracking/Tracker.php
 
 		-
 			message: "#^Foreach overwrites \\$logEntry with its value variable\\.$#"
 			count: 1
-			path: libraries/classes/Tracker.php
+			path: libraries/classes/Tracking/Tracker.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracker\\:\\:changeTrackingData\\(\\) has parameter \\$newData with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracker\\:\\:changeTrackingData\\(\\) has parameter \\$newData with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracker.php
+			path: libraries/classes/Tracking/Tracker.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracker\\:\\:parseQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracker\\:\\:parseQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracker.php
+			path: libraries/classes/Tracking/Tracker.php
 
 		-
 			message: "#^Offset 0 does not exist on array\\<PhpMyAdmin\\\\SqlParser\\\\Components\\\\Expression\\>\\|null\\.$#"
 			count: 4
-			path: libraries/classes/Tracker.php
+			path: libraries/classes/Tracking/Tracker.php
 
 		-
 			message: "#^Offset 0 does not exist on array\\<PhpMyAdmin\\\\SqlParser\\\\Components\\\\RenameOperation\\>\\|null\\.$#"
 			count: 2
-			path: libraries/classes/Tracker.php
+			path: libraries/classes/Tracking/Tracker.php
 
 		-
 			message: "#^Only numeric types are allowed in \\-, int\\<0, max\\>\\|false given on the left side\\.$#"
 			count: 2
-			path: libraries/classes/Tracker.php
+			path: libraries/classes/Tracking/Tracker.php
 
 		-
-			message: "#^Parameter \\#3 \\$version of static method PhpMyAdmin\\\\Tracker\\:\\:deactivateTracking\\(\\) expects string, int given\\.$#"
+			message: "#^Property PhpMyAdmin\\\\Tracking\\\\Tracker\\:\\:\\$trackingCache type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracker.php
-
-		-
-			message: "#^Property PhpMyAdmin\\\\Tracker\\:\\:\\$trackingCache type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Tracker.php
+			path: libraries/classes/Tracking/Tracker.php
 
 		-
 			message: "#^Cannot access offset 'COLUMNS' on mixed\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
 			message: "#^Cannot access offset 'INDEXES' on mixed\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:createTrackingForMultipleTables\\(\\) has parameter \\$selected with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:createTrackingForMultipleTables\\(\\) has parameter \\$selected with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:deleteFromTrackingReportLog\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:deleteFromTrackingReportLog\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:deleteTrackingReportRows\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:deleteTrackingReportRows\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:exportAsSqlDump\\(\\) has parameter \\$entries with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:exportAsSqlDump\\(\\) has parameter \\$entries with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:exportAsSqlExecution\\(\\) has parameter \\$entries with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:exportAsSqlExecution\\(\\) has parameter \\$entries with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:extractTableNames\\(\\) has parameter \\$table_list with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:filter\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:extractTableNames\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:filter\\(\\) has parameter \\$filter_users with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:filter\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:filter\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:filter\\(\\) has parameter \\$filter_users with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getEntries\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:filter\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getEntries\\(\\) has parameter \\$filter_users with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getEntries\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getEntries\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getEntries\\(\\) has parameter \\$filter_users with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForColumns\\(\\) has parameter \\$columns with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getEntries\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForDataDefinitionStatements\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForColumns\\(\\) has parameter \\$columns with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForDataDefinitionStatements\\(\\) has parameter \\$filter_users with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForDataDefinitionStatements\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForDataDefinitionStatements\\(\\) has parameter \\$url_params with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForDataDefinitionStatements\\(\\) has parameter \\$filter_users with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForDataDefinitionStatements\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForDataDefinitionStatements\\(\\) has parameter \\$url_params with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForDataManipulationStatements\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForDataDefinitionStatements\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForDataManipulationStatements\\(\\) has parameter \\$filter_users with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForDataManipulationStatements\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForDataManipulationStatements\\(\\) has parameter \\$url_params with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForDataManipulationStatements\\(\\) has parameter \\$filter_users with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForDataStatements\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForDataManipulationStatements\\(\\) has parameter \\$url_params with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForDataStatements\\(\\) has parameter \\$filterUsers with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForDataStatements\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForDataStatements\\(\\) has parameter \\$urlParams with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForDataStatements\\(\\) has parameter \\$filterUsers with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForDataStatements\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForDataStatements\\(\\) has parameter \\$urlParams with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForDbTrackingTables\\(\\) has parameter \\$urlParams with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForDataStatements\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForIndexes\\(\\) has parameter \\$indexes with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForDbTrackingTables\\(\\) has parameter \\$urlParams with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForMainPage\\(\\) has parameter \\$urlParams with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForIndexes\\(\\) has parameter \\$indexes with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForSchemaSnapshot\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForMainPage\\(\\) has parameter \\$urlParams with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForTrackingReport\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForSchemaSnapshot\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForTrackingReport\\(\\) has parameter \\$filter_users with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForTrackingReport\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForTrackingReport\\(\\) has parameter \\$url_params with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForTrackingReport\\(\\) has parameter \\$filter_users with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForTrackingReportExportForm1\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForTrackingReport\\(\\) has parameter \\$url_params with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForTrackingReportExportForm1\\(\\) has parameter \\$filter_users with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForTrackingReportExportForm1\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForTrackingReportExportForm1\\(\\) has parameter \\$url_params with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForTrackingReportExportForm1\\(\\) has parameter \\$filter_users with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForTrackingReportExportForm2\\(\\) has parameter \\$url_params with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForTrackingReportExportForm1\\(\\) has parameter \\$url_params with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Tracking.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForTrackingReportExportForm2\\(\\) has parameter \\$url_params with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Tracking.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Tracking\\:\\:getUntrackedTables\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
 			message: "#^Offset 'statement' does not exist on array\\{date\\: string, username\\: string, statement\\: string\\}\\|string\\.$#"
 			count: 4
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
 			message: "#^Offset 0 does not exist on array\\<int, array\\{date\\: string, username\\: string, statement\\: string\\}\\>\\|string\\|null\\.$#"
 			count: 3
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
 			message: "#^Offset 1 does not exist on array\\<int, array\\{date\\: string, username\\: string, statement\\: string\\}\\>\\|string\\|null\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Parameter \\#1 \\$columns of method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForColumns\\(\\) expects array, mixed given\\.$#"
+			message: "#^Parameter \\#1 \\$columns of method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForColumns\\(\\) expects array, mixed given\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
 			message: "#^Parameter \\#1 \\$data of static method PhpMyAdmin\\\\Core\\:\\:safeUnserialize\\(\\) expects string, array\\<int, array\\<string, string\\>\\>\\|string\\|null given\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
-			message: "#^Parameter \\#1 \\$dbName of static method PhpMyAdmin\\\\Tracker\\:\\:isTracked\\(\\) expects string, string\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$indexes of method PhpMyAdmin\\\\Tracking\\\\Tracking\\:\\:getHtmlForIndexes\\(\\) expects array, mixed given\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
-
-		-
-			message: "#^Parameter \\#1 \\$indexes of method PhpMyAdmin\\\\Tracking\\:\\:getHtmlForIndexes\\(\\) expects array, mixed given\\.$#"
-			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
 			message: "#^Parameter \\#1 \\$str of method PhpMyAdmin\\\\DatabaseInterface\\:\\:escapeString\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
 			message: "#^Parameter \\#1 \\$value of function count expects array\\|Countable, mixed given\\.$#"
 			count: 1
-			path: libraries/classes/Tracking.php
-
-		-
-			message: "#^Parameter \\#2 \\$tableName of static method PhpMyAdmin\\\\Tracker\\:\\:isTracked\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: libraries/classes/Tracking.php
+			path: libraries/classes/Tracking/Tracking.php
 
 		-
 			message: "#^Foreach overwrites \\$file with its value variable\\.$#"
@@ -9054,11 +8769,6 @@ parameters:
 			message: "#^Property PhpMyAdmin\\\\TwoFactor\\:\\:\\$backend \\(PhpMyAdmin\\\\Plugins\\\\TwoFactorPlugin\\) does not accept object\\.$#"
 			count: 2
 			path: libraries/classes/TwoFactor.php
-
-		-
-			message: "#^Casting to string something that's already string\\.$#"
-			count: 2
-			path: libraries/classes/Url.php
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Url\\:\\:getFromRoute\\(\\) has parameter \\$additionalParameters with no value type specified in iterable type array\\.$#"
@@ -9126,22 +8836,12 @@ parameters:
 			path: libraries/classes/Util.php
 
 		-
-			message: "#^Casting to int something that's already int\\<min, \\-2\\>\\|int\\<0, max\\>\\.$#"
-			count: 5
-			path: libraries/classes/Util.php
-
-		-
 			message: "#^For loop initial assignment overwrites variable \\$i\\.$#"
 			count: 1
 			path: libraries/classes/Util.php
 
 		-
 			message: "#^Foreach overwrites \\$quote with its value variable\\.$#"
-			count: 1
-			path: libraries/classes/Util.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Util\\:\\:checkRowCount\\(\\) has parameter \\$table with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/Util.php
 
@@ -9167,11 +8867,6 @@ parameters:
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Util\\:\\:getMenuTabList\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: libraries/classes/Util.php
-
-		-
-			message: "#^Method PhpMyAdmin\\\\Util\\:\\:getTableList\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: libraries/classes/Util.php
 
@@ -9234,11 +8929,6 @@ parameters:
 			message: "#^Variable static method call on PhpMyAdmin\\\\Util\\.$#"
 			count: 1
 			path: libraries/classes/Util.php
-
-		-
-			message: "#^Casting to string something that's already string\\.$#"
-			count: 1
-			path: libraries/classes/Utils/ForeignKey.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
@@ -11121,29 +10811,29 @@ parameters:
 			path: test/classes/Theme/ThemeTest.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\TrackerTest\\:\\:getTableNameData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tests\\\\Tracking\\\\TrackerTest\\:\\:getTableNameData\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: test/classes/TrackerTest.php
+			path: test/classes/Tracking/TrackerTest.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\TrackerTest\\:\\:getTrackedDataProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tests\\\\Tracking\\\\TrackerTest\\:\\:getTrackedDataProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: test/classes/TrackerTest.php
+			path: test/classes/Tracking/TrackerTest.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\TrackerTest\\:\\:parseQueryData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tests\\\\Tracking\\\\TrackerTest\\:\\:parseQueryData\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: test/classes/TrackerTest.php
+			path: test/classes/Tracking/TrackerTest.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\TrackerTest\\:\\:testGetTrackedData\\(\\) has parameter \\$expectedArray with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tests\\\\Tracking\\\\TrackerTest\\:\\:testGetTrackedData\\(\\) has parameter \\$expectedArray with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: test/classes/TrackerTest.php
+			path: test/classes/Tracking/TrackerTest.php
 
 		-
-			message: "#^Method PhpMyAdmin\\\\Tests\\\\TrackerTest\\:\\:testGetTrackedData\\(\\) has parameter \\$fetchArrayReturn with no value type specified in iterable type array\\.$#"
+			message: "#^Method PhpMyAdmin\\\\Tests\\\\Tracking\\\\TrackerTest\\:\\:testGetTrackedData\\(\\) has parameter \\$fetchArrayReturn with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: test/classes/TrackerTest.php
+			path: test/classes/Tracking/TrackerTest.php
 
 		-
 			message: "#^Method PhpMyAdmin\\\\Tests\\\\TransformationsTest\\:\\:fixupData\\(\\) return type has no value type specified in iterable type array\\.$#"

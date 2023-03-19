@@ -20,7 +20,9 @@ use PhpMyAdmin\ResponseRenderer;
 use PhpMyAdmin\Sanitize;
 use PhpMyAdmin\StorageEngine;
 use PhpMyAdmin\Template;
-use PhpMyAdmin\Tracker;
+use PhpMyAdmin\Tracking\TrackedTable;
+use PhpMyAdmin\Tracking\Tracker;
+use PhpMyAdmin\Tracking\TrackingChecker;
 use PhpMyAdmin\Url;
 use PhpMyAdmin\Util;
 
@@ -74,6 +76,7 @@ class StructureController extends AbstractController
         private Relation $relation,
         private Replication $replication,
         private DatabaseInterface $dbi,
+        private TrackingChecker $trackingChecker,
     ) {
         parent::__construct($response, $template);
 
@@ -199,7 +202,7 @@ class StructureController extends AbstractController
     }
 
     /** @param array $replicaInfo */
-    protected function displayTableList($replicaInfo): string
+    protected function displayTableList(array $replicaInfo): string
     {
         $html = '';
 
@@ -221,6 +224,7 @@ class StructureController extends AbstractController
         $hiddenFields = [];
         $overallApproxRows = false;
         $structureTableRows = [];
+        $trackedTables = $this->trackingChecker->getTrackedTables($GLOBALS['db']);
         foreach ($this->tables as $currentTable) {
             // Get valid statistics whatever is the table type
 
@@ -396,7 +400,7 @@ class StructureController extends AbstractController
                         ),
                     ),
                 ),
-                'tracking_icon' => $this->getTrackingIcon($truename),
+                'tracking_icon' => $this->getTrackingIcon($truename, $trackedTables[$truename] ?? null),
                 'server_replica_status' => $replicaInfo['status'],
                 'table_url_params' => $tableUrlParams,
                 'db_is_system_schema' => $this->dbIsSystemSchema,
@@ -500,20 +504,17 @@ class StructureController extends AbstractController
     /**
      * Returns the tracking icon if the table is tracked
      *
-     * @param string $table table name
-     *
      * @return string HTML for tracking icon
      */
-    protected function getTrackingIcon(string $table): string
+    protected function getTrackingIcon(string $table, TrackedTable|null $trackedTable): string
     {
         $trackingIcon = '';
         if (Tracker::isActive()) {
-            $isTracked = Tracker::isTracked($GLOBALS['db'], $table);
-            if ($isTracked || Tracker::getVersion($GLOBALS['db'], $table) > 0) {
+            if ($trackedTable !== null) {
                 $trackingIcon = $this->template->render('database/structure/tracking_icon', [
                     'db' => $GLOBALS['db'],
                     'table' => $table,
-                    'is_tracked' => $isTracked,
+                    'is_tracked' => $trackedTable->active,
                 ]);
             }
         }
@@ -577,7 +578,7 @@ class StructureController extends AbstractController
      *
      * @return array
      */
-    protected function getReplicationStatus($replicaInfo, string $table): array
+    protected function getReplicationStatus(array $replicaInfo, string $table): array
     {
         $do = $ignored = false;
         if ($replicaInfo['status']) {
@@ -629,7 +630,7 @@ class StructureController extends AbstractController
      * @param array  $db       DB to look into
      * @param string $truename Table name
      */
-    protected function hasTable(array $db, $truename): bool
+    protected function hasTable(array $db, string $truename): bool
     {
         foreach ($db as $dbTable) {
             if (
@@ -660,8 +661,8 @@ class StructureController extends AbstractController
      */
     protected function getStuffForEngineTypeTable(
         array $currentTable,
-        $sumSize,
-        $overheadSize,
+        int $sumSize,
+        int $overheadSize,
     ): array {
         $formattedSize = '-';
         $unit = '';
@@ -771,21 +772,21 @@ class StructureController extends AbstractController
      * @param array  $currentTable      current table
      * @param int    $sumSize           sum size
      * @param int    $overheadSize      overhead size
-     * @param int    $formattedSize     formatted size
+     * @param string $formattedSize     formatted size
      * @param string $unit              unit
-     * @param int    $formattedOverhead overhead formatted
+     * @param string $formattedOverhead overhead formatted
      * @param string $overheadUnit      overhead unit
      *
      * @return array
      */
     protected function getValuesForAriaTable(
         array $currentTable,
-        $sumSize,
-        $overheadSize,
-        $formattedSize,
-        $unit,
-        $formattedOverhead,
-        $overheadUnit,
+        int $sumSize,
+        int $overheadSize,
+        string $formattedSize,
+        string $unit,
+        string $formattedOverhead,
+        string $overheadUnit,
     ): array {
         if ($this->dbIsSystemSchema) {
             $currentTable['Rows'] = $this->dbi
@@ -830,7 +831,7 @@ class StructureController extends AbstractController
      */
     protected function getValuesForInnodbTable(
         array $currentTable,
-        $sumSize,
+        int $sumSize,
     ): array {
         $formattedSize = $unit = '';
 
